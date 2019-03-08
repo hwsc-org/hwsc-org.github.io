@@ -4,7 +4,6 @@ title: WHAT'S THIS TITLE FOR
 ---
 <h1 class="bd-title">{{ page.title }}</h1>
 <h5>Table of Contents</h5>
-* ToC
-{:toc}
+{% include toc.html html=content %}
 <br><br>
 {{ content }}
