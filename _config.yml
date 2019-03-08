@@ -1,3 +1,6 @@
-name: HWSC Test
 markdown: kramdown
+
+kramdown:
+  input: GFM
+
 highlighter: rouge
