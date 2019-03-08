@@ -1,0 +1,32 @@
+ul.toc {
+    padding-left: 0px;
+    font-size: .85rem;
+    font-weight: lighter;
+}
+
+ul.toc > li:first-child {
+    margin-bottom: .3em;
+}
+
+ul.toc ul {
+    padding-left: 15px;
+}
+
+ul.toc li {
+    list-style: none;
+}
+
+ul.toc a {
+    color: #77757a
+}
+
+.toc-container {
+    height: 100%;
+    top: 5.1rem;
+    width: 100%;
+    max-width: 190px;
+}
+
+.toc-header {
+    color: #6d6d6d;
+}

@@ -3,12 +3,36 @@ layout: default
 title: WHAT'S THIS TITLE FOR
 ---
 <div class="d-flex">
-  <div class="p-3 pt-4">
+  <div class="border-right pr-3">
+    <nav class="align-items-start navbar navbar-light flex-column navbar-expand-lg px-2 bg-white">
+
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse collapse" id="navbarSupportedContent" style="">
+        <ul class="navbar-nav flex-column">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Frontend <span class="sr-only">(current)</span></a>
+            <ul class="nav ml-3">
+              <li class=""><a class="" href="#">Rules</a></li>
+              <li class=""><a class="" href="#">Vuex</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="px-5 pt-4">
     <h1 class="bd-title">{{ page.title }}</h1>
     {{ content }}
   </div>
-  <div class="p-3 pt-4">
-    <h5>Table of Contents</h5>
-    {% include toc.html html=content sanitize=true class="toc" item_class="toc-item" h_min=1 h_max=3 %}
+  <div class="px-4 toc-container border-left sticky-top">
+    <h6 class="toc-header">Table of Contents</h6>
+    {% include toc.html html=content class="toc border-left sticky-top" item_class="toc-item" h_min=1 h_max=2 %}
   </div>
 </div>

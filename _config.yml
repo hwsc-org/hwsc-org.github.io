@@ -1,5 +1,3 @@
 name: HWSC Test
 markdown: kramdown
-
-kramdown:
-  auto_ids: true
+highlighter: rouge

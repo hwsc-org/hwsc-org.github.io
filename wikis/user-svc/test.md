@@ -1,10 +1,10 @@
 ---
 layout: wiki
 title: "hwsc-user-svc"
-toc: true
 ---
 # testing md files
 Testing table of contents
+
 ## subheader
 Setting a permalink in front matter for every page on your site is no fun. Luckily, Jekyll lets you set the permalink 
 structure globally in your Setting a permalink in front matter for every page on your site is no fun. Luckily, Jekyll 
