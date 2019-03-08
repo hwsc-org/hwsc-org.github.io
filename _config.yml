@@ -1,6 +1,6 @@
 markdown: kramdown
-
 kramdown:
   input: GFM
-
-highlighter: rouge
+  parse_block_html: true
+permalink: /blog/:year/:month/:title.html
+highlight: pygments
