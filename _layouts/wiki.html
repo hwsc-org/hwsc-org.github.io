@@ -1,38 +1,28 @@
 ---
 layout: default
-title: WHAT'S THIS TITLE FOR
 ---
-<div class="d-flex">
-  <div class="border-right pr-3">
-    <nav class="align-items-start navbar navbar-light flex-column navbar-expand-lg px-2 bg-white">
+<div class="d-flex row flex-nowrap hwsc-flex-container">
+  <div class="d-xl-block col-md-2 sticky-top hwsc-sidebar border-right hwsc-side-menu">
+    <nav class="align-items-start navbar navbar-light flex-column navbar-expand-lg px-0 bg-white">
 
       <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="navbar-collapse collapse" id="navbarSupportedContent" style="">
-        <ul class="navbar-nav flex-column">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Frontend <span class="sr-only">(current)</span></a>
-            <ul class="nav ml-3">
-              <li class=""><a class="" href="#">Rules</a></li>
-              <li class=""><a class="" href="#">Vuex</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-
+        <ul class="navbar-nav flex-column" id="hwsc-services">
         </ul>
       </div>
     </nav>
   </div>
   <div class="px-5 pt-4 markdown-body">
-    <h1 class="bd-title">{{ page.title }}</h1>
+    <h1 class="hwsc-title">{{ page.title }}</h1>
     {{ content }}
   </div>
-  <div class="px-4 toc-container border-left sticky-top">
-    <h6 class="toc-header">Table of Contents</h6>
-    {% include toc.html html=content class="toc border-left sticky-top" item_class="toc-item" h_min=1 h_max=2 %}
+  <div class="d-none d-xl-block col-md-2 sticky-top hwsc-sidebar">
+    <div class="border-left pl-4 pr-1 py-4">
+      <h6 class="toc-header">Page Contents</h6>
+      {% include toc.html html=content class="toc border-left sticky-top" item_class="toc-item" h_min=2 h_max=3 %}
+    </div>
   </div>
 </div>

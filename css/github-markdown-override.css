@@ -1,0 +1,50 @@
+.markdown-body h2[id]::before,
+.markdown-body h3[id]::before,
+.markdown-body h4[id]::before {
+    content: "";
+    display: block;
+}
+
+.markdown-body h2[id] {
+    font-size: 2em;
+    margin-top: 50px;
+}
+.markdown-body h2[id]::before {
+    height: 80px;
+    margin-top: -20px;
+}
+
+.markdown-body h3[id] {
+    font-size: 1.4em;
+    margin-top: 40px;
+}
+.markdown-body h3[id]::before {
+    height: 90px;
+    margin-top: -80px;
+}
+
+.markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 35px 35px 120px 35px;
+}
+
+.home-body {
+    max-width: 750px;
+}
+
+.home-body h2[id] {
+    font-size: 2em;
+    margin-top: 0;
+}
+.home-body h2[id]::before {
+    margin-top: -30px;
+}
+
+@media (max-width: 767px) {
+    .markdown-body {
+        padding: 15px !important;
+    }
+}
