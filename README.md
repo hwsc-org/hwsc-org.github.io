@@ -8,6 +8,8 @@ with GitHub's markdown, then you are good to go. Otherwise, visit
 [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) website to
 learn how to use markdown language.
 
+<br>
+
 ---
 <br>
 
@@ -20,6 +22,8 @@ If your service directory **does not exist**, then create a new directory named 
 your service under `wikis` directory:
 
 ![wikis directory ex](/images/readme/wikis-directory.png)
+
+<br>
 
 ---
 <br>
@@ -98,6 +102,8 @@ redirect_from:
 This tells Jekyll to redirect `hwsc-org.github.io/wikis/frontend-svc/` to 
 `hwsc-org.github.io/wikis/frontend-svc/rules.html` 
 
+<br>
+
 ---
 <br>
 
@@ -118,6 +124,8 @@ Otherwise the TOC won't be formatted correctly.
 
 Avoid using `# H1` because this header is reserved for `title` in our
 front matter blocks in our `md` files.
+
+<br>
 
 ---
 <br>
@@ -188,6 +196,7 @@ const frontSvcRoutes = new Map(Object.entries({
   Rules: `${FRONT_SVC_PATH}rules.html`,
 }));
 ```
+<br>
 
 ---
 <br>
