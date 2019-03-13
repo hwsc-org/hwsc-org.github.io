@@ -8,10 +8,6 @@ with GitHub's markdown, then you are good to go. Otherwise, visit
 [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) website to
 learn how to use markdown language.
 
-<br>
-
----
-<br>
 
 ## Create a service directory
 Before you do this step, look under directory `wikis` to make sure the service 
