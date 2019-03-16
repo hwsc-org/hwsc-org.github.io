@@ -15,11 +15,16 @@ Epics related to `hwsc-user-svc`
 
 ### CreateUser
 #### Purpose
-User has to verify a new email on registration and update.
+Chrome is able to create a new user.
 #### Limitations
 - `EmailToken` expires in 2 weeks.
 - `CreateUser` requires a new column called `secret` in table `user_svc.email_tokens` - [link](https://github.com/hwsc-org/hwsc-user-svc/issues/113)
-- Email query string
+
+#### Procedure
+1. Chrome goes to a registration page.
+2. User puts in the required fields for registration.
+3. Chrome sanitizes user inputs as required.
+4. Chrome dials using a dummy email and password - [link](https://hwsc-org.github.io/wikis/app-gateway/epics.html#authenticateuser)
 
 ### VerifyEmailToken
 #### Purpose
@@ -31,7 +36,7 @@ User has to verify a new email on registration and update.
 1. User clicks on a verification link from their email.
 2. Chrome opens this link.
 3. Chrome is redirected to the verification link.
-4. Chrome extracts and validates the query string `emailtoken=<token>`.
+4. Chrome extracts and validates the query string `verify-email?token?=<token>`.
 5. Chrome dials to app-gateway-svc using `"authorization": "Email Token " + <token>`
 6. app-gateway-svc parses `token_string`
 7. app-gateway-svc invokes `VerifyEmailToken` from user-svc using the `token_string`.
