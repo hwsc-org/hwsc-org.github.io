@@ -25,7 +25,7 @@
 
 .markdown-body {
     box-sizing: border-box;
-    min-width: 200px;
+    width: 100%;
     max-width: 980px;
     margin: 0 auto;
     padding: 35px 35px 120px 35px;

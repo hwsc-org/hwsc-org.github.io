@@ -36,23 +36,28 @@ you would go to `/wikis/frontend-svc/` and create a `rules.md` file:
 
 ### Define front matter block
 The first thing in your newly created `md` file **must** be a front matter block.
-Copy and paste snippet below, and the only thing you'll be changing is the `title`.
+Copy and paste snippet below, and the only thing you'll be changing is
+the `directory`, `filename`, `title`.
 
 ```yaml
 
 ---
 layout: wiki
+directory: <name of directory that your .md file is in>
+filename: <name of your file name>.md
 title: YourService > YourTitle
 ---
 
 ```
 
-i.e.: To define the front matter for `rules.md` for `frontend service`:
+i.e.: To define the front matter for `rules.md` in directory `frontend-svc`:
 
 ```yaml
 
 ---
 layout: wiki
+directory: frontend-svc
+filename: rules.md
 title: Frontend > Rules
 ---
 
@@ -60,7 +65,8 @@ title: Frontend > Rules
 
 Without going in too much detail (and not necessary to understand), this block tells 
 Jekyll to use `layout` defined in `/_layouts/wiki.html` and injects your 
-`title` in an area defined in `wiki.html`.
+`title`, `directory`, `filename` in an area defined in `wiki.html`.
+`directory` and `filename` is used to construct the link to edit your file in github.
 
 <br>
 

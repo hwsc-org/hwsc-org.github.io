@@ -16,11 +16,22 @@ layout: default
     </nav>
   </div>
   <div class="px-5 pt-4 markdown-body">
-    <h1 class="hwsc-title">{{ page.title }}</h1>
+    <div class="d-flex align-items-center justify-content-between">
+      <div>
+        <h1 class="hwsc-title">{{ page.title }}</h1>
+      </div>
+      <div class="d-none d-lg-block">
+        <a
+          href="https://github.com/hwsc-org/hwsc-org.github.io/blob/master/wikis/{{ page.directory }}/{{ page.filename }}"
+          target="_blank"
+          class="btn btn-primary hwsc-edit-btn"
+        >EDIT</a>
+      </div>
+    </div>
     {{ content }}
   </div>
   <div class="d-none d-xl-block col-md-2 sticky-top hwsc-sidebar">
-    <div class="border-left pl-4 pr-1 py-4">
+    <div class="border-left pl-3 pr-1 py-4">
       <h6 class="toc-header">Page Contents</h6>
       {% include toc.html html=content class="toc border-left sticky-top" item_class="toc-item" h_min=2 h_max=3 %}
     </div>
