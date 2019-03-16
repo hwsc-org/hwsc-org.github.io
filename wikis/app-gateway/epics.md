@@ -14,14 +14,66 @@ redirect_from:
 Epics related to `hwsc-user-svc`
 
 ### CreateUser
-
+#### Purpose
+User has to verify a new email on registration and update.
+#### Limitations
+- `EmailToken` expires in 2 weeks.
+- `CreateUser` requires a new column called `secret` in table `user_svc.email_tokens` - [link](https://github.com/hwsc-org/hwsc-user-svc/issues/113)
+- Email query string
 
 ### VerifyEmailToken
+#### Purpose
+User has to verify a new email on registration and update.
+#### Limitations
+- `VerifyEmailToken` requires a new column called `secret` in table `user_svc.email_tokens` - [link](https://github.com/hwsc-org/hwsc-user-svc/issues/113)
+
+#### Procedure
+1. User clicks on a verification link from their email.
+2. Chrome opens this link.
+3. Chrome is redirected to the verification link.
+4. Chrome extracts and validates the query string `emailtoken=<token>`.
+5. Chrome dials to app-gateway-svc using `"authorization": "Email Token " + <token>`
+6. app-gateway-svc parses `token_string`
+7. app-gateway-svc invokes `VerifyEmailToken` from user-svc using the `token_string`.
+8. user-svc gets the `token_string`.
+9. user-svc extracts the `uuid` using `extractUUID` from the hwsc-lib.
+10. user-svc locks for writing using `uuid`.
+11. user-svc gets the `row` from `user_svc.email_tokens`.
+12. user-svc verifies the following:
+    - If the `EmailToken` does not exist:
+        1. user-svc returns `codes.Unauthenticated` to app-gateway-svc.
+        2. app-gateway-svc forwards the error code to Chrome.
+        3. Chrome informs the user that the `EmailToken` is invalid.
+    - If the `EmailToken` has expired:
+        1. Delete the `EmailToken` from `user_svc.email_tokens`.
+        2. Retrieve user row from `user_svc.accounts` table.
+        3. Generate a new email token and insert into `user_svc.email_tokens`.
+        4. Resend a verification email to the email based on two criteria:
+            - Resend email under `prospective_email` column if its column is not null/empty.
+            - Resend email under email column if `prospective_email` column is null/empty.
+        7. user-svc sends `codes.DeadlineExceeded` to app-gateway-svc.
+        8. app-gateway-svc forwards the error code to Chrome.
+        9. Chrome informs the user that a new `EmailToken` has been sent.
+    - If the `EmailToken` has not expired:
+        1. user-svc pairs the `token_string` with a `secret` to make an `identification`.
+        2. user-svc utilizes an `Authority` to validate the `identification`.
+        3. If the `EmailToken` is valid:
+            1. Delete the `EmailToken` from `user_svc.email_tokens`.
+            2. Modify user row `is_verified` to `TRUE` from `user_svc.accounts` table.
+            3. Modify user email as necessary such as switching emails.
+            4. user-svc returns `codes.OK`
+            5. app-gateway-svc forwards the code to Chrome.
+            6. Chrome redirects user to login page
+        4. If the `EmailToken` is invalid:
+            1. user-svc returns `codes.Unauthenticated` to app-gateway-svc.
+            2. app-gateway-svc forwards the error code to Chrome.
+            3. Chrome informs the user that the `EmailToken` is invalid.
 
 ### VerifyAuthToken
 #### Purpose
 In the event of a connection failure, Chrome has to authenticate with app-gateway-svc using an existing `AuthToken`.
 #### Limitations
+- `AuthToken` expires in 2 hours.
 - `VerifyAuthToken` only works with `User` permission - [link](https://github.com/hwsc-org/hwsc-user-svc/issues/111)
 
 #### Procedure
@@ -49,7 +101,7 @@ Chrome is able to login using email and password.
 #### Procedure
 1. Chrome logs in with user's email and password.
 2. Chrome performs base64URL encoding with `email:password`.
-3. Chrome dials to app-gateway-svc using `"authorization": "Basic " + base64 encoded "email:password"`.
+3. Chrome dials to app-gateway-svc using `"authorization": "Basic " + base64 encoded "<email:password>"`.
 4. app-gateway-svc parses the `email` and `password`.
 5. app-gateway-svc invokes `AuthenticateUser` from the user-svc using `email` and `password`.
 6. user-svc validates the `email` and `password`
