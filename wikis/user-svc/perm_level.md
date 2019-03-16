@@ -1,5 +1,7 @@
 ---
 layout: wiki
+directory: user-svc
+filename: perm_level.md
 title: User > Permission Level
 redirect_from:
   - "/wikis/user-svc/"

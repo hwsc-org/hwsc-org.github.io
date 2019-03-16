@@ -1,5 +1,7 @@
 ---
 layout: wiki
+directory: frontend-svc
+filename: rules.md
 title: Frontend > Rules
 ---
 
