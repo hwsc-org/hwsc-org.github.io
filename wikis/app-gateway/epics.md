@@ -8,8 +8,6 @@ redirect_from:
   - "/wikis/"
 ---
 
-[TEMP link to issue for epics](https://github.com/hwsc-org/hwsc-org.github.io/issues/1)
-
 ## User
 Epics related to `hwsc-user-svc`
 
@@ -37,7 +35,7 @@ Chrome is able to create a new user.
     1. app-gateway-svc invokes `CreateUser` from user-svc with the required fields.
     2. user-svc performs validations.
     3. user-svc locks for writing using the generated `uuid`.
-    4. user-svc inserts the user to the `user_svc.accounts`.
+    4. user-svc inserts the `user` to the `user_svc.accounts`.
     5. user-svc generates a `secret` using `generateSecretKey`.
         - This `secret` is **NOT** inserted in `user_security.secrets` table.
     6. user-svc generates an `EmailToken` using the `secret`
@@ -167,7 +165,26 @@ Maintain a secured connection between app-gateway-svc and browser.
             5. app-gateway-svc updates the current `secret` as necessary.
             6. app-gateway-svc returns the `token_string` to Chrome.
             7. Chrome updates the `token_string`.
+3. If the `token_string` is valid, then do nothing.
 
+### GetUser
+1. Before Chrome goes to user page.
+2. Chrome invokes `GetUser` from app-gateway-svc using a `token_string`.
+3. app-gateway-svc validates the `token_string` using an `Authority` with `User` permission.
+      - If the `token_string` is invalid:
+          1. app-gateway-svc returns an `codes.Unauthenticated` to Chrome.
+          2. Chrome informs the user that the resource is unavailable.
+          3. app-gateway-svc pages VictorOps to notify developer of the issue.
+          4. Chrome is logged out of the page.
+      - If the `token_string` is valid:
+          1. app-gateway-svc invokes `GetUser` from user-svc with the `uuid` from `token_string`.
+          2. user-svc performs validations.
+          3. user-svc locks for reads using the generated `uuid`.
+          4. user-svc gets the `user` in the `user_svc.accounts` table.
+          5. user-svc returns `codes.OK` and `user` with empty `password` to app-gateway-svc.
+          6. app-gateway-svc forwards the response to Chrome.
+          7. Render the user page using the `user` from the response.
+          
 ### UpdateUser
 #### Purpose
 Performs a user update.
@@ -177,7 +194,7 @@ Performs a user update.
 #### Procedure
 1. Chrome goes to account page.
 2. User updates necessary fields.
-3. Chrome sends the updater `user` object and `token_string` to app-gateway-svc.
+3. Chrome sends the updated `user` object and `token_string` to app-gateway-svc.
 4. app-gateway-svc validates the `token_string` using an `Authority` with `User` permission.
    - If the `token_string` is invalid:
        1. app-gateway-svc returns an `codes.Internal` to Chrome.
@@ -196,17 +213,19 @@ Performs a user update.
                4. user-svc generates a verification link.
                5. user-svc sends an email with a verification link.
                6. user-svc `is_verified` is set to `FALSE`.
-       4. user-svc updates the user in the `user_svc.accounts` table
-       5. user-svc returns `codes.OK` to app-gateway-svc.
-       6. app-gateway-svc forwards the response code to Chrome.
-       7. For an email update, Chrome redirects user to login page, or informs the user to check their email.
+       4. user-svc updates the `user` in the `user_svc.accounts` table
+       5. user-svc returns `codes.OK` and updated `user` with empty `password` to app-gateway-svc.
+       6. app-gateway-svc forwards the response to Chrome.
+       7. For an email update, Chrome redirects user to login page, or informs the user to check their email, otherwise update the user page using the updated `user` from the response.
 
-### DeleteUser
-          
 ### GetSecret
 
-### GetUser
 
+### DeleteUser
+#### Purpose
+Deletes or deactivates a user.
+#### Limitations
+- Not implemented yet.
 
 
 ## Documents
