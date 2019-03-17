@@ -8,7 +8,7 @@ redirect_from:
   - "/wikis/"
 ---
 ## Permission Level
-### No Permission
+### NoPermission
 - User is not allowed to use the service.
 - This permission can be used to disable or ban a user.
 - This permission level requires `HS256` hashing algorithm.
