@@ -188,18 +188,18 @@ Performs a user update.
        1. app-gateway-svc invokes `UpdateUser` from user-svc with the required fields.
        2. user-svc performs validations.
        3. user-svc locks for writing using the generated `uuid`.
-       - If user is attempting to update e-mail.
-           1. user-svc generates a `secret` using `generateSecretKey`.
-               - This `secret` is **NOT** inserted in `user_security.secrets` table.
-           2. user-svc generates an `EmailToken` using the `secret`.
-           3. user-svc inserts to `user_svc.email_tokens` table.
-           4. user-svc generates a verification link.
-           5. user-svc sends an email with a verification link.
-           6. user-svc `is_verified` is set to `FALSE`.
-       5. user-svc updates the user in the `user_svc.accounts` table
-       6. user-svc returns `codes.OK` to app-gateway-svc.
-       7. app-gateway-svc forwards the response code to Chrome.
-       8. For an email update, Chrome redirects user to login page, or informs the user to check their email.
+           - If user is attempting to update e-mail.
+               1. user-svc generates a `secret` using `generateSecretKey`.
+                   - This `secret` is **NOT** inserted in `user_security.secrets` table.
+               2. user-svc generates an `EmailToken` using the `secret`.
+               3. user-svc inserts to `user_svc.email_tokens` table.
+               4. user-svc generates a verification link.
+               5. user-svc sends an email with a verification link.
+               6. user-svc `is_verified` is set to `FALSE`.
+       4. user-svc updates the user in the `user_svc.accounts` table
+       5. user-svc returns `codes.OK` to app-gateway-svc.
+       6. app-gateway-svc forwards the response code to Chrome.
+       7. For an email update, Chrome redirects user to login page, or informs the user to check their email.
 
 ### DeleteUser
           
