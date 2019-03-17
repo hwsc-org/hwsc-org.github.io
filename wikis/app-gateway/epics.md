@@ -50,6 +50,7 @@ Chrome is able to create a new user.
 #### Purpose
 User has to verify a new email on registration and update.
 #### Limitations
+- `EmailToken` expires in 2 weeks.
 - `VerifyEmailToken` requires a new column called `secret` in table `user_svc.email_tokens` - [link](https://github.com/hwsc-org/hwsc-user-svc/issues/113)
 
 #### Procedure
@@ -99,6 +100,7 @@ User has to verify a new email on registration and update.
 In the event of a connection failure, Chrome has to authenticate with app-gateway-svc using an existing `AuthToken`.
 #### Limitations
 - `AuthToken` expires in 2 hours.
+- `Secret` expires in 1 week.
 - `VerifyAuthToken` only works with `User` permission - [link](https://github.com/hwsc-org/hwsc-user-svc/issues/111)
 
 #### Procedure
@@ -109,9 +111,10 @@ In the event of a connection failure, Chrome has to authenticate with app-gatewa
 5. user-svc utilizes an `Authority` to validate the `identification`.
 6. If the `identification` is valid: 
     1. user-svc returns `codes.OK` and `identification` to app-gateway-svc.
-    2. app-gateway-svc finalizes the authentication.
-    3. app-gateway-svc performs context metadata sanitization.
-    4. app-gateway-svc returns the `token_string`.
+    2. app-gateway-svc updates the current `secret` as necessary.
+    3. app-gateway-svc finalizes the authentication.
+    4. app-gateway-svc performs context metadata sanitization.
+    5. app-gateway-svc returns the `token_string`.
 7. If the `identification` is invalid: 
     1. user-svc returns the appropriate error code.
     2. app-gateway-svc forwards the error code.
@@ -121,6 +124,8 @@ In the event of a connection failure, Chrome has to authenticate with app-gatewa
 #### Purpose
 Chrome is able to login using email and password.
 #### Limitations
+- `AuthToken` expires in 2 hours.
+- `Secret` expires in 1 week.
 - `AuthenticateUser` should return an `identification` and not the matched user - [link](https://github.com/hwsc-org/hwsc-user-svc/issues/112)
 
 #### Procedure
@@ -133,6 +138,7 @@ Chrome is able to login using email and password.
 7. If the `email` and `password` are valid:
     1. user-svc generates or grabs an existing `AuthToken`.
     2. user-svc returns `codes.OK` and `identification` to app-gateway-svc.
+    3. app-gateway-svc updates the current `secret` as necessary.
     3. app-gateway-svc finalizes the authentication.
     4. app-gateway-svc performs context metadata sanitization.
     5. app-gateway-svc returns the `token_string` to Chrome.
@@ -147,6 +153,8 @@ Chrome is able to login using email and password.
 #### Purpose
 Maintain a secured connection between app-gateway-svc and browser.
 #### Limitations
+- `AuthToken` expires in 2 hours.
+- `Secret` expires in 1 week.
 - Rework `GetAuthToken` - [link](https://github.com/hwsc-org/hwsc-user-svc/issues/114)
 
 #### Procedure
@@ -161,13 +169,18 @@ Maintain a secured connection between app-gateway-svc and browser.
             1. app-gateway-svc invokes `GetNewAuthToken` from user-svc using the `Identification`.
             2. user-svc generates a new `AuthToken`.
             3. user-svc inserts the `AuthToken` to `user_security.auth_tokens` table.
-            4. user-svc returns the `Identification` to app-gateway-svc.
+            4. user-svc returns the `identification` to app-gateway-svc.
             5. app-gateway-svc updates the current `secret` as necessary.
             6. app-gateway-svc returns the `token_string` to Chrome.
             7. Chrome updates the `token_string`.
 3. If the `token_string` is valid, then do nothing.
 
 ### GetUser
+#### Purpose
+Gets the `user` the render the user page.
+#### Limitations
+- None at this time.
+
 1. Before Chrome goes to user page.
 2. Chrome invokes `GetUser` from app-gateway-svc using a `token_string`.
 3. app-gateway-svc validates the `token_string` using an `Authority` with `User` permission.
@@ -219,8 +232,24 @@ Performs a user update.
        7. For an email update, Chrome redirects user to login page, or informs the user to check their email, otherwise update the user page using the updated `user` from the response.
 
 ### GetSecret
+#### Purpose
+app-gateway-svc updates the current `secret`
+#### Limitations
+- `Secret` expires in 1 week.
 
-
+#### Procedure
+1. On app-gateway-svc start-up, app-gateway-svc invokes `GetStatus` from user-svc.
+    - If user-svc is available:
+        1. user-svc checks if there is active `secret`.
+            - If there is no active `secret`:
+                1. user-svc generates a new `secret` with 1 week expiration timestamp.
+                2. user-svc inserts the `secret` in `user_security.secrets` table.
+        2. user-svc grabs the active `secret` from ` user_security.active_secret` table.
+        3. user-svc returns the `identification` with the active `secret` to app-gateway-svc.
+        4. app-gateway-svc saves the `secret`
+    - If the user-svc is unavailable:
+        1. app-gateway-svc will grab the `secret` during invocation of `AuthenticateUser` - [link](https://hwsc-org.github.io/wikis/app-gateway/epics.html#getuser)
+  
 ### DeleteUser
 #### Purpose
 Deletes or deactivates a user.
