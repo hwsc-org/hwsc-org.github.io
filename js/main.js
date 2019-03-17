@@ -29,6 +29,9 @@ $(document).ready(function() {
   const FUNDAMENTALS_PATH = '/wikis/fundamentals/';
   const fundamentalsRoutes = new Map(Object.entries({
     // ORDER MATTERS, also replace .md extension to .html
+    'Introduction': `${FUNDAMENTALS_PATH}intro.html`,
+    'Onboarding': `${FUNDAMENTALS_PATH}onboarding.html`,
+    'Runbooks': `${FUNDAMENTALS_PATH}runbooks.html`,
     'Authorization/Authentication': `${FUNDAMENTALS_PATH}authority.html`,
     'CI/CD': `${FUNDAMENTALS_PATH}ci-cd.html`
   }));

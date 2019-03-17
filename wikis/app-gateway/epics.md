@@ -5,7 +5,6 @@ filename: epics.md
 title: App Gateway > Epics
 redirect_from:
   - "/wikis/app-gateway/"
-  - "/wikis/"
 ---
 ## User
 Epics related to `hwsc-user-svc`

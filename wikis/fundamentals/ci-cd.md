@@ -5,7 +5,6 @@ filename: ci-cd.md
 title: Fundamentals > CI/CD
 redirect_from:
   - "/wikis/fundamentals/"
-  - "/wikis/"
 ---
 ## Unit Testing
 todo
