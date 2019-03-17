@@ -29,23 +29,23 @@ Chrome is able to create a new user.
 6. app-gateway-svc returns `token_string` with `UserRegistration` permission.
 7. Using the `token_string`, Chrome invokes `CreateUser` from app-gateway-svc with the required fields.
 8. app-gateway-svc validates the `token_string` using an `Authority` with `UserRegistration` permission.
-10. If the `token_string` is invalid:
+9. If the `token_string` is invalid:
     1. app-gateway-svc returns an `codes.Internal` to Chrome.
     2. Chrome informs the user that registration is unavailable.
     3. app-gateway-svc pages VictorOps to notify developer of the issue.
-11. If the `token_string` is valid:
+10. If the `token_string` is valid:
     1. app-gateway-svc invokes `CreateUser` from user-svc with the required fields.
     2. user-svc performs validations.
     3. user-svc locks for writing using the generated `uuid`.
     4. user-svc inserts the user to the `user_svc.accounts`.
-    5. user-svc generates a `secret` using `generateSecretKey`
+    5. user-svc generates a `secret` using `generateSecretKey`.
         - This `secret` is **NOT** inserted in `user_security.secrets` table.
     6. user-svc generates an `EmailToken` using the `secret`
     7. user-svc inserts to `user_svc.email_tokens` table.
     8. user-svc generates a verification link.
     9. user-svc sends an email with a verification link.
     10. user-svc returns `codes.OK` to app-gateway-svc.
-    11. app-gateway-svc forwards the code to Chrome.
+    11. app-gateway-svc forwards the response code to Chrome.
     12. Chrome redirects user to login page, or informs the user to check their email.
     
 ### VerifyEmailToken
@@ -59,8 +59,8 @@ User has to verify a new email on registration and update.
 2. Chrome opens this link.
 3. Chrome is redirected to the verification link.
 4. Chrome extracts and validates the query string `verify-email?token?=<token>`.
-5. Chrome dials to app-gateway-svc using `"authorization": "Email Token " + <token>`
-6. app-gateway-svc parses `token_string`
+5. Chrome dials to app-gateway-svc using `"authorization": "Email Token " + <token>`.
+6. app-gateway-svc parses `token_string`.
 7. app-gateway-svc invokes `VerifyEmailToken` from user-svc using the `token_string`.
 8. user-svc gets the `token_string`.
 9. user-svc extracts the `uuid` using `extractUUID` from the hwsc-lib.
@@ -88,9 +88,9 @@ User has to verify a new email on registration and update.
             1. Delete the `EmailToken` from `user_svc.email_tokens`.
             2. Modify user row `is_verified` to `TRUE` from `user_svc.accounts` table.
             3. Modify user email as necessary such as switching emails.
-            4. user-svc returns `codes.OK`
-            5. app-gateway-svc forwards the code to Chrome.
-            6. Chrome redirects user to login page
+            4. user-svc returns `codes.OK`.
+            5. app-gateway-svc forwards the response code to Chrome.
+            6. Chrome redirects user to login page.
         4. If the `EmailToken` is invalid:
             1. user-svc returns `codes.Unauthenticated` to app-gateway-svc.
             2. app-gateway-svc forwards the error code to Chrome.
@@ -113,11 +113,11 @@ In the event of a connection failure, Chrome has to authenticate with app-gatewa
     1. user-svc returns `codes.OK` and `identification` to app-gateway-svc.
     2. app-gateway-svc finalizes the authentication.
     3. app-gateway-svc performs context metadata sanitization.
-    4. app-gateway-svc returns the `token_string`
+    4. app-gateway-svc returns the `token_string`.
 7. If the `identification` is invalid: 
     1. user-svc returns the appropriate error code.
     2. app-gateway-svc forwards the error code.
-    3. Chrome redirects to login page
+    3. Chrome redirects to login page.
 
 ### AuthenticateUser
 #### Purpose
@@ -131,13 +131,15 @@ Chrome is able to login using email and password.
 3. Chrome dials to app-gateway-svc using `"authorization": "Basic " + base64 encoded "<email:password>"`.
 4. app-gateway-svc parses the `email` and `password`.
 5. app-gateway-svc invokes `AuthenticateUser` from the user-svc using `email` and `password`.
-6. user-svc validates the `email` and `password`
+6. user-svc validates the `email` and `password`.
 7. If the `email` and `password` are valid:
-    1. user-svc generates or grabs an existing `AuthToken`
-    1. user-svc returns `codes.OK` and `identification` to app-gateway-svc.
-    2. app-gateway-svc finalizes the authentication.
-    3. app-gateway-svc performs context metadata sanitization.
-    4. app-gateway-svc returns the `token_string`
+    1. user-svc generates or grabs an existing `AuthToken`.
+    2. user-svc returns `codes.OK` and `identification` to app-gateway-svc.
+    3. app-gateway-svc finalizes the authentication.
+    4. app-gateway-svc performs context metadata sanitization.
+    5. app-gateway-svc returns the `token_string` to Chrome.
+    6. Chrome invokes `GetUser` from app-gateway-svc - [link](https://hwsc-org.github.io/wikis/app-gateway/epics.html#getuser)
+    7. Chrome redirects to the user's page.
 8. If the `email` and `password` are invalid: 
     1. user-svc returns the appropriate error code.
     2. app-gateway-svc forwards the error code.
@@ -153,7 +155,7 @@ Maintain a secured connection between app-gateway-svc and browser.
 1. Every 5 minutes, Chrome verifies if the current `token_string` has not expired.
 2. If the `token_string` will expire in 15 minutes:
     1. Chrome invokes `GetNewAuthToken` from app-gateway-svc using `token_string`.
-    2. app-gateway-svc validates the `token_string` to an `Identication` using an `Authority`
+    2. app-gateway-svc validates the `token_string` to an `Identication` using an `Authority`.
         - If the `token_string` is not valid:
             1. app-gateway-svc returns `codes.DeadlineExceeded` to Chrome.
             2. Chrome is redirects to login page.
@@ -165,14 +167,46 @@ Maintain a secured connection between app-gateway-svc and browser.
             5. app-gateway-svc updates the current `secret` as necessary.
             6. app-gateway-svc returns the `token_string` to Chrome.
             7. Chrome updates the `token_string`.
-            
+
+### UpdateUser
+#### Purpose
+Performs a user update.
+#### Limitations
+- None at this time.
+
+#### Procedure
+1. Chrome goes to account page.
+2. User updates necessary fields.
+3. Chrome sends the updater `user` object and `token_string` to app-gateway-svc.
+4. app-gateway-svc validates the `token_string` using an `Authority` with `User` permission.
+   - If the `token_string` is invalid:
+       1. app-gateway-svc returns an `codes.Internal` to Chrome.
+       2. Chrome informs the user that update user is unavailable.
+       3. app-gateway-svc pages VictorOps to notify developer of the issue.
+       4. Chrome is logged out of the page.
+   - If the `token_string` is valid:
+       1. app-gateway-svc invokes `UpdateUser` from user-svc with the required fields.
+       2. user-svc performs validations.
+       3. user-svc locks for writing using the generated `uuid`.
+       4. If user is attempting to update e-mail.
+           1. user-svc generates a `secret` using `generateSecretKey`.
+               - This `secret` is **NOT** inserted in `user_security.secrets` table.
+           2. user-svc generates an `EmailToken` using the `secret`.
+           3. user-svc inserts to `user_svc.email_tokens` table.
+           4. user-svc generates a verification link.
+           5. user-svc sends an email with a verification link.
+           6. user-svc `is_verified` is set to `FALSE`.
+       5. user-svc updates the user in the `user_svc.accounts` table
+       6. user-svc returns `codes.OK` to app-gateway-svc.
+       7. app-gateway-svc forwards the response code to Chrome.
+       8. For an email update, Chrome redirects user to login page, or informs the user to check their email.
+
+### DeleteUser
+          
 ### GetSecret
 
 ### GetUser
 
-### UpdateUser
-
-### DeleteUser
 
 
 ## Documents
