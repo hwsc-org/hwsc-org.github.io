@@ -8,7 +8,7 @@ redirect_from:
   - "/wikis/"
 ---
 
-## User
+# User
 Epics related to `hwsc-user-svc`
 
 ### CreateUser
@@ -257,9 +257,9 @@ Deletes or deactivates a user.
 - Not implemented yet.
 
 
-## Documents
+# Documents
 Epics related to `hwsc-document-svc`
 
 
-## File Transactions
+# File Transactions
 Epics related to `hwsc-file-transaction-svc`
