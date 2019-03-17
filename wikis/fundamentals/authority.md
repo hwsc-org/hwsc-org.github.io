@@ -11,19 +11,19 @@ redirect_from:
 ### No Permission
 - User is not allowed to use the service.
 - This permission can be used to disable or ban a user.
-- This permission level requires `HS256`.
+- This permission level requires `HS256` hashing algorithm.
 
 ### UserRegistration
 - `UserRegistration` is used for [CreateUser](https://hwsc-org.github.io/wikis/app-gateway/epics.html#authenticateuser)
-- This permission level requires `HS256`.
+- This permission level requires `HS256` hashing algorithm.
 
 ### User
 - `User` is only allowed to use services based on user's ownership.
-- This permission level requires `HS256`.
+- This permission level requires `HS256` hashing algorithm.
 
 ### Admin
 - `Admin` is allowed to perform CRUD on everything.
-- This permission level requires `HS512`.
+- This permission level requires `HS512` hashing algorithm.
 
 ## Token Generation
 - Header contains the algorithm and token type used to sign the token.
