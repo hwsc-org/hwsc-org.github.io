@@ -255,9 +255,9 @@ Deletes or deactivates a user.
 - Not implemented yet.
 
 
-## Documents
+## Document
 Epics related to `hwsc-document-svc`
 
 
-## File Transactions
+## File Transaction
 Epics related to `hwsc-file-transaction-svc`

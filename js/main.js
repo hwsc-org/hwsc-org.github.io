@@ -15,14 +15,22 @@ $(document).ready(function() {
   const USER_SVC_PATH = '/wikis/user-svc/';
   const userSvcRoutes = new Map(Object.entries({
     // ORDER MATTERS, also replace .md extension to .html
-    'Permission Level': `${USER_SVC_PATH}perm_level.html`,
+    'Documentation': `${USER_SVC_PATH}doc.html`,
   }));
+
+  // all wikis for File Transaction Directory
+  const FILE_TRANS_SVC_PATH = '/wikis/file-transaction-svc/';
+  const fileTransSvcRoutes = new Map(Object.entries({
+    // ORDER MATTERS, also replace .md extension to .html
+    'Documentation': `${FILE_TRANS_SVC_PATH}doc.html`,
+  }));
+
 
   // all wikis for App Gateway Directory
   const APP_GATEWAY_PATH = '/wikis/app-gateway/';
   const appGatewayRoutes = new Map(Object.entries({
     // ORDER MATTERS, also replace .md extension to .html
-    'Epics': `${APP_GATEWAY_PATH}epics.html`
+    'Epics': `${APP_GATEWAY_PATH}epics.html`,
   }));
 
   // all wikis for fundamentals
@@ -33,7 +41,8 @@ $(document).ready(function() {
     'Onboarding': `${FUNDAMENTALS_PATH}onboarding.html`,
     'Runbooks': `${FUNDAMENTALS_PATH}runbooks.html`,
     'Authorization/Authentication': `${FUNDAMENTALS_PATH}authority.html`,
-    'CI/CD': `${FUNDAMENTALS_PATH}ci-cd.html`
+    'Database Migration': `${FUNDAMENTALS_PATH}db-migration.html`,
+    'CI/CD': `${FUNDAMENTALS_PATH}ci-cd.html`,
   }));
 
   // menu to parse (ORDER MATTERS)
@@ -42,6 +51,7 @@ $(document).ready(function() {
     ['App Gateway', appGatewayRoutes],
     ['Frontend', frontSvcRoutes],
     ['User', userSvcRoutes],
+    ['File Transaction', fileTransSvcRoutes],
   ]);
 
   const createMenu = () => {
