@@ -2,13 +2,26 @@
 layout: wiki
 directory: fundamentals
 filename: authority.md
-title: Fundamentals > Authority
+title: Fundamentals > Authorization/Authentication
 redirect_from:
   - "/wikis/fundamentals/"
   - "/wikis/"
 ---
-
-## TODO1
+## Permission Level
 todo
 
-## TODO2
+## Signature
+todo
+
+## JWT/AuthToken
+todo
+
+## JET/EmailToken
+todo
+
+## Secret
+todo
+
+## Authority
+todo
+

@@ -29,7 +29,8 @@ $(document).ready(function() {
   const FUNDAMENTALS_PATH = '/wikis/fundamentals/';
   const fundamentalsRoutes = new Map(Object.entries({
     // ORDER MATTERS, also replace .md extension to .html
-    'Authorization/Authentication': `${FUNDAMENTALS_PATH}authority.html`
+    'Authorization/Authentication': `${FUNDAMENTALS_PATH}authority.html`,
+    'Continuous Integration/Continuous Deployment': `${FUNDAMENTALS_PATH}ci-cd.html`
   }));
 
   // menu to parse (ORDER MATTERS)

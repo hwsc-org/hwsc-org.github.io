@@ -7,7 +7,6 @@ redirect_from:
   - "/wikis/app-gateway/"
   - "/wikis/"
 ---
-
 ## User
 Epics related to `hwsc-user-svc`
 
