@@ -13,10 +13,11 @@ todo
 ## Signature
 todo
 
-## JWT/AuthToken
+## Tokens
+#### JWT/AuthToken
 todo
 
-## JET/EmailToken
+#### JET/EmailToken
 todo
 
 ## Secret
