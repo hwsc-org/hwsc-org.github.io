@@ -25,8 +25,16 @@ $(document).ready(function() {
     'Epics': `${APP_GATEWAY_PATH}epics.html`
   }));
 
+  // all wikis for fundamentals
+  const FUNDAMENTALS_PATH = '/wikis/fundamentals/';
+  const fundamentalsRoutes = new Map(Object.entries({
+    // ORDER MATTERS, also replace .md extension to .html
+    'Authority': `${FUNDAMENTALS_PATH}authority.html`
+  }));
+
   // menu to parse (ORDER MATTERS)
   const sideMenuMap = new Map([
+    ['Fundamentals', fundamentalsRoutes],
     ['App Gateway', appGatewayRoutes],
     ['Frontend', frontSvcRoutes],
     ['User', userSvcRoutes],
