@@ -188,7 +188,7 @@ Performs a user update.
        1. app-gateway-svc invokes `UpdateUser` from user-svc with the required fields.
        2. user-svc performs validations.
        3. user-svc locks for writing using the generated `uuid`.
-       4. If user is attempting to update e-mail.
+       - If user is attempting to update e-mail.
            1. user-svc generates a `secret` using `generateSecretKey`.
                - This `secret` is **NOT** inserted in `user_security.secrets` table.
            2. user-svc generates an `EmailToken` using the `secret`.
