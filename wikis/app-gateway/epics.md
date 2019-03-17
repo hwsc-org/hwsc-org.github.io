@@ -24,8 +24,30 @@ Chrome is able to create a new user.
 1. Chrome goes to a registration page.
 2. User puts in the required fields for registration.
 3. Chrome sanitizes user inputs as required.
-4. Chrome dials using a dummy email and password - [link](https://hwsc-org.github.io/wikis/app-gateway/epics.html#authenticateuser)
-
+4. Challenger user with a CAPTCHA test.
+5. If user passes CAPTCHA test, Chrome dials using a dummy email and password - [link](https://hwsc-org.github.io/wikis/app-gateway/epics.html#authenticateuser)
+6. app-gateway-svc returns `token_string` with `UserRegistration` permission.
+7. Using the `token_string`, Chrome invokes `CreateUser` from app-gateway-svc with the required fields.
+8. app-gateway-svc validates the `token_string` using an `Authority` with `UserRegistration` permission.
+10. If the `token_string` is invalid:
+    1. app-gateway-svc returns an `codes.Internal` to Chrome.
+    2. Chrome informs the user that registration is unavailable.
+    3. app-gateway-svc pages VictorOps to notify developer of the issue.
+11. If the `token_string` is valid:
+    1. app-gateway-svc invokes `CreateUser` from user-svc with the required fields.
+    2. user-svc performs validations.
+    3. user-svc locks for writing using the generated `uuid`.
+    4. user-svc inserts the user to the `user_svc.accounts`.
+    5. user-svc generates a `secret` using `generateSecretKey`
+        - This `secret` is **NOT** inserted in `user_security.secrets` table.
+    6. user-svc generates an `EmailToken` using the `secret`
+    7. user-svc inserts to `user_svc.email_tokens` table.
+    8. user-svc generates a verification link.
+    9. user-svc sends an email with a verification link.
+    10. user-svc returns `codes.OK` to app-gateway-svc.
+    11. app-gateway-svc forwards the code to Chrome.
+    12. Chrome redirects user to login page, or informs the user to check their email.
+    
 ### VerifyEmailToken
 #### Purpose
 User has to verify a new email on registration and update.
@@ -119,7 +141,7 @@ Chrome is able to login using email and password.
 8. If the `email` and `password` are invalid: 
     1. user-svc returns the appropriate error code.
     2. app-gateway-svc forwards the error code.
-    3. Chrome redirects to login page or displays a user-friend error.
+    3. Chrome redirects to login page or displays a user-friendly error.
 
 ### GetAuthToken
 
