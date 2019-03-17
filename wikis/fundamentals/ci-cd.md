@@ -2,7 +2,7 @@
 layout: wiki
 directory: fundamentals
 filename: ci-cd.md
-title: Fundamentals > Continuous Integration/Continuous Deployment
+title: Fundamentals > CI/CD
 redirect_from:
   - "/wikis/fundamentals/"
   - "/wikis/"
