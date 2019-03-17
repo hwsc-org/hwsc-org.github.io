@@ -84,14 +84,14 @@ User has to verify a new email on registration and update.
     - If the `EmailToken` has not expired:
         1. user-svc pairs the `token_string` with a `secret` to make an `identification`.
         2. user-svc utilizes an `Authority` to validate the `identification`.
-        3. If the `EmailToken` is valid:
+        - If the `EmailToken` is valid:
             1. Delete the `EmailToken` from `user_svc.email_tokens`.
             2. Modify user row `is_verified` to `TRUE` from `user_svc.accounts` table.
             3. Modify user email as necessary such as switching emails.
             4. user-svc returns `codes.OK`.
             5. app-gateway-svc forwards the response code to Chrome.
             6. Chrome redirects user to login page.
-        4. If the `EmailToken` is invalid:
+        - If the `EmailToken` is invalid:
             1. user-svc returns `codes.Unauthenticated` to app-gateway-svc.
             2. app-gateway-svc forwards the error code to Chrome.
             3. Chrome informs the user that the `EmailToken` is invalid.
