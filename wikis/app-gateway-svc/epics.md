@@ -179,6 +179,7 @@ Gets the `user` the render the user page.
 #### Limitations
 - None at this time.
 
+#### Procedure
 1. Before Chrome goes to user page.
 2. Chrome invokes `GetUser` from app-gateway-svc using a `token_string`.
 3. app-gateway-svc validates the `token_string` using an `Authority` with `User` permission.
