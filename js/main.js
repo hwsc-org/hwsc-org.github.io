@@ -48,8 +48,8 @@ $(document).ready(function() {
   // menu to parse (ORDER MATTERS)
   const sideMenuMap = new Map([
     ['Fundamentals', fundamentalsRoutes],
-    ['App Gateway', appGatewayRoutes],
     ['Frontend', frontSvcRoutes],
+    ['App Gateway', appGatewayRoutes],
     ['User', userSvcRoutes],
     ['File Transaction', fileTransSvcRoutes],
   ]);
