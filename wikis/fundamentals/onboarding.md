@@ -21,6 +21,9 @@ Make accounts and request for permissions for the following resources.
 - [Azure](https://azure.microsoft.com/en-us/features/azure-portal/)
 - [Slack](https://hwsc.slack.com)
 
+## Configuration Files
+These files are located in our [Slack](https://hwsc.slack.com) channel.
+
 ## macOS
 ### brew
 1. Refer to the official brew [website](https://brew.sh/)
