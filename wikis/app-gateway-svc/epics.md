@@ -1,10 +1,10 @@
 ---
 layout: wiki
-directory: app-gateway
+directory: app-gateway-svc
 filename: epics.md
 title: App Gateway > Epics
 redirect_from:
-  - "/wikis/app-gateway/"
+  - "/wikis/app-gateway-svc/"
 ---
 ## User
 Epics related to `hwsc-user-svc`

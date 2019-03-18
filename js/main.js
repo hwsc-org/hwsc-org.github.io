@@ -18,6 +18,14 @@ $(document).ready(function() {
     'Documentation': `${USER_SVC_PATH}doc.html`,
   }));
 
+  // all wikis for Document Service Directory
+  const DOCUMENT_SVC_PATH = '/wikis/document-svc/';
+  const documentSvcRoutes = new Map(Object.entries({
+    // ORDER MATTERS, also replace .md extension to .html
+    'Documentation': `${DOCUMENT_SVC_PATH}doc.html`,
+  }));
+
+
   // all wikis for File Transaction Directory
   const FILE_TRANS_SVC_PATH = '/wikis/file-transaction-svc/';
   const fileTransSvcRoutes = new Map(Object.entries({
@@ -27,9 +35,10 @@ $(document).ready(function() {
 
 
   // all wikis for App Gateway Directory
-  const APP_GATEWAY_PATH = '/wikis/app-gateway/';
+  const APP_GATEWAY_PATH = '/wikis/app-gateway-svc/';
   const appGatewayRoutes = new Map(Object.entries({
     // ORDER MATTERS, also replace .md extension to .html
+    'Documentation': `${APP_GATEWAY_PATH}doc.html`,
     'Epics': `${APP_GATEWAY_PATH}epics.html`,
   }));
 
@@ -50,6 +59,7 @@ $(document).ready(function() {
     ['Fundamentals', fundamentalsRoutes],
     ['Frontend', frontSvcRoutes],
     ['App Gateway', appGatewayRoutes],
+    ['Document', documentSvcRoutes],
     ['User', userSvcRoutes],
     ['File Transaction', fileTransSvcRoutes],
   ]);
