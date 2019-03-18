@@ -9,7 +9,7 @@ redirect_from:
 ## Onboarding
 This page will help you setup your development environment.
 
-This document currently support **macOs**. 
+This document currently supports **macOs**. 
 
 Feel free to add other operating system and update this document as you go through the steps.
 
