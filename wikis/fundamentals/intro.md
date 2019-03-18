@@ -23,5 +23,5 @@ Good documentation is like a good block of code. Short, simple, and easy to unde
 - Understand who the documentation is aimed at. Is it only for developers? Is there a broader audience? Understanding this will save you time, since you will know up front how much to elaborate in your explanations.
 - Write a short, but descriptive background explaining the main points of what you built. This will help readers understand the purpose of the feature and ascertain its relevance to what they want to know.
 - List and describe the main perspectives of your feature, making sure to point out any dependencies that exist with other features.
-- Make sure there is a timestamp, to tell readers the validity of the documentation. Also, if you are using certain libraries, be sure to include their versions as well.
+- If applicable, make sure there is a timestamp to tell readers the validity of the documentation. Also, if you are using certain libraries, be sure to include their versions as well.
 - Be generous with your coding examples, detailing how to properly use the feature you wrote and showcase the expected results.
