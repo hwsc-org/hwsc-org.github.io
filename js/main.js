@@ -48,6 +48,7 @@ $(document).ready(function() {
     // ORDER MATTERS, also replace .md extension to .html
     'Introduction': `${FUNDAMENTALS_PATH}intro.html`,
     'Onboarding': `${FUNDAMENTALS_PATH}onboarding.html`,
+    'Code Review': `${FUNDAMENTALS_PATH}code-review.html`,
     'Runbooks': `${FUNDAMENTALS_PATH}runbooks.html`,
     'Authorization/Authentication': `${FUNDAMENTALS_PATH}authority.html`,
     'Database Migration': `${FUNDAMENTALS_PATH}db-migration.html`,

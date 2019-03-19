@@ -64,6 +64,6 @@ These files are located in our [Slack](https://hwsc.slack.com) channel.
 ### PosgtreSQL 11
 1. Follow the installation guide in the official PSQL [website](https://postgresapp.com/downloads.html)
 
-### Migrates
+### Migrate
 1. Install the CLI using `brew install golang-migrate`
 2. Refer to the [repo](https://github.com/golang-migrate/migrate#use-in-your-go-project) for GoLang library imports
