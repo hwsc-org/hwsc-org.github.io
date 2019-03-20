@@ -18,6 +18,7 @@ We use 3 pipelines for our services. These pipelines are hosted in [Azure DevOps
 - Builds a Docker container for the service.
 - Tags the container with `test-int`.
 - Pushes the container in the [Docker Hub](https://cloud.docker.com/u/hwsc/repository/list)
+
 ### `trigger-master-<service-name>`
 - This is defined in `azure-pipelines.yml`
 - Tests the merge commit to the `master` branch for stability.
@@ -25,6 +26,7 @@ We use 3 pipelines for our services. These pipelines are hosted in [Azure DevOps
 - Tags the container with `int`.
 - Pushes the container in the [Docker Hub](https://cloud.docker.com/u/hwsc/repository/list)
 - This container can be used to test prior to releasing.
+
 ### `ext-master-<service-name>`
 - This is defined in `azure-pipelines-ext.yml`
 - Tests the merge commit to the `ext` branch for stability.
