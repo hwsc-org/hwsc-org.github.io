@@ -37,7 +37,7 @@ In short, don't be afraid to contribute feedback! Code reviewing can be one of t
 - Review the functionality. Verify the input against the output. Check the unit test for missing cases. Do we need synchronization?
 - Review for maintainability. Can we easily maintain and scale the codes?
 - Can we optimize it?
-- If asking for changes, include a reason for the change and possibly documentations or examples. Feel free to even suggest or write the change needed.
+- If asking for changes, include a reason for the change and possibly provide documentations or examples. Feel free to even suggest or write the change needed.
 - Follow up on reviews to resolve.
 - Check for lint errors.
 - Check for missing documentation in the codes and wiki.
