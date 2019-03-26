@@ -13,6 +13,9 @@ This document currently supports **macOs**.
 
 Feel free to add other operating system and update this document as you go through the steps.
 
+## Read Rules and Guidelines
+- [frontend](https://hwsc-org.github.io/wikis/frontend-svc/general.html)
+
 ## Accounts
 Make accounts and request for permissions for the following resources.
 - [Github](https://github.com/hwsc-org)
@@ -23,6 +26,11 @@ Make accounts and request for permissions for the following resources.
 
 ## Configuration Files
 These files are located in our [Slack](https://hwsc.slack.com) channel.
+
+## IDE's and Text Editors
+- [JetBrains](https://www.jetbrains.com/)
+- [VSCodes](https://code.visualstudio.com/)
+- git difftool and mergetool [p4merge](https://www.perforce.com/products/helix-core-apps/merge-diff-tool-p4merge)
 
 ## macOS
 ### brew
@@ -67,11 +75,3 @@ These files are located in our [Slack](https://hwsc.slack.com) channel.
 ### Migrate
 1. Install the CLI using `brew install golang-migrate`
 2. Refer to the [repo](https://github.com/golang-migrate/migrate#use-in-your-go-project) for GoLang library imports
-
-### IDE's and Text Editors
-- [JetBrains](https://www.jetbrains.com/)
-- [VSCodes](https://code.visualstudio.com/)
-- git difftool and mergetool [p4merge](https://www.perforce.com/products/helix-core-apps/merge-diff-tool-p4merge)
-
-### Read Rules and Guidelines
-- [frontend](https://hwsc-org.github.io/wikis/frontend-svc/general.html)
