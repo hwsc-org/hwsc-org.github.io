@@ -1,14 +1,16 @@
 ---
 layout: wiki
 directory: frontend-svc
-filename: rules.md
-title: Frontend > Rules
+filename: general.md
+title: Frontend > General
 ---
 ## General 
-- Do **NOT** style using the `id`
+### Rules and Guidelines
+- Do **NOT** style using the `id`.
     - `id`s have a higher specificity than classes or elements and as such behave unpredictably
 - If you're styling an element such as `div` or `span`, use a CSS class instead of just targeting `div`/`span` in the CSS file. 
-  - If  I see some code that's styling a `div` that's a child of `nav` that's a direct child of `ul` that's a direct child of `some-component`, I have much less of an idea of what's going on than if I see something like `parent-component.help-link { color: $grey; etc }`.
+  - If  I see some code that's styling a `div` that's a child of `nav` that's a direct child of `ul` that's a direct child of `some-component`, 
+  I have much less of an idea of what's going on than if I see something like `parent-component.help-link { color: $grey; etc }`.
 - Use dash-case for class names.
 - Avoid using :nth-of-type, or multiple html tag selectors in a row. Instead we prefer apply multiple classes. 
    - Example of multiple tag selectors below: 
@@ -20,6 +22,16 @@ title: Frontend > Rules
     
 - Keep as 'Immutable' as possible! i.e: Do **NOT** overwrite styles with the same name to have different functionality.
 - **DO NOT NEST ANY DEEPER THAN 3 LEVELS!**
+- Only use the `@import` command to import files that set variables. 
+- If you `@import` a partial which generates styles, and the partial is called or imported elsewhere, the generated CSS will contain duplicate styles. 
+Only use `@import` on 'safe' partials which generate and set variables for use elsewhere, but don't produce any CSS. 
+Then, the files which call `@import` on these 'safe' partials can use these common variables to generate styles as needed. 
+- Whenever a new feature is added to the frontend, make a good faith effort to pay attention to these things:
+    - Are all new clickable/interactive items also accessible to a keyboard?
+    - If an item is interactive, does it have hover and focus behaviour?
+    - If color is removed from the page, is all essential information still present? 
+        - talking about color blind accessibility
+        
 - Split up classes via 'separation of concerns'.
     - Layout
     - Style
@@ -58,8 +70,8 @@ Do not capitalize domain objects unless
 
 #### Examples of title case:
 
-- Add to Ticket
-- Create Chart
+- Upload File
+- Create Document
 
 #### Example of sentence case: 
 
@@ -86,30 +98,13 @@ If the text you are using is longer than 3-5 words, strongly consider using sent
     - Immutability 
     - Lack of variable usage (randomly adding new colors/font sizes)
     - Lack of GOOD names   
-    - See an explicit `0` getting set, like `Padding: 0`? This is likely overwriting something... which we want to avoid as much as possible.
-
-## SASS (.scss file types)
-The stylesheet language we use to generate our CSS.
-
-`@import '<partial filename'`
-- Only use the `@import` command to import files that set variables. 
-- If you `@import` a partial which generates styles, and the partial is called or imported elsewhere, the generated CSS will contain duplicate styles. 
-Only use `@import` on 'safe' partials which generate and set variables for use elsewhere, but don't produce any CSS. 
-Then, the files which call `@import` on these 'safe' partials can use these common variables to generate styles as needed. 
-
-Whenever a new feature is added to the frontend, make a good faith effort to pay attention to these things:
-
-- Are all new clickable/interactive items also accessible to a keyboard?
-- If an item is interactive, does it have hover and focus behaviour?
-- If color is removed from the page, is all essential information still present? 
-    - talking about color blind accessibility
+    - See an explicit `0` getting set, like `padding: 0`? This is likely overwriting something... which we want to avoid as much as possible.
 
 ## Screen Readers
-
 Need to make sure things have the right `aria` attributes that let screen readers know how they should be used, and also have keyboard accessibility. 
 We can get a lot of mileage out of using default controls, but sometimes we can't. (the accordion behaviour on the search page table, modals...)
 
-## Resources:
+## Resources
 - [CSS separation of concerns](https://adamwathan.me/css-utility-classes-and-separation-of-concerns/)
 - [How to Center EVERYTHING](https://css-tricks.com/centering-css-complete-guide/)
 - [Flexbox 101](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)

@@ -7,7 +7,7 @@ $(document).ready(function() {
   const FRONT_SVC_PATH = '/wikis/frontend-svc/';
   const frontSvcRoutes = new Map(Object.entries({
     // ORDER MATTERS, also replace .md extension to .html
-    Rules: `${FRONT_SVC_PATH}rules.html`,
+    General: `${FRONT_SVC_PATH}general.html`,
     Vuex: `${FRONT_SVC_PATH}vuex.html`,
   }));
 
