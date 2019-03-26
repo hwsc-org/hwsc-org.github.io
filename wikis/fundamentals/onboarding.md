@@ -14,6 +14,7 @@ This document currently supports **macOs**.
 Feel free to add other operating system and update this document as you go through the steps.
 
 ## Read Rules and Guidelines
+- [code review](https://hwsc-org.github.io/wikis/fundamentals/code-review.html)
 - [frontend](https://hwsc-org.github.io/wikis/frontend-svc/general.html)
 
 ## Accounts
