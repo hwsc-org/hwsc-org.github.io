@@ -28,6 +28,9 @@ title: Frontend > Rules
 ### Separation of Concerns Guideline
 Must **READ** [link](https://adamwathan.me/css-utility-classes-and-separation-of-concerns/)
 
+### Localization Guide
+Strings should be declared constants and associated with a language i.e: All English strings are grouped together.
+
 ### Capitalization Guide
 
 #### Links and Buttons
@@ -76,10 +79,38 @@ If the text you are using is longer than 3-5 words, strongly consider using sent
 ### Finding Classes
 - Inspect element of the thing you want to copy (You may need to go a couple elements above, since the class could be on the parent). Then search for those class names in your editor.
 
+## How To Review CSS
+ - Check for:
+    - Separation of concerns
+    - Too much nesting
+    - Immutability 
+    - Lack of variable usage (randomly adding new colors/font sizes)
+    - Lack of GOOD names   
+    - See an explicit `0` getting set, like `Padding: 0`? This is likely overwriting something... which we want to avoid as much as possible.
 
+## SASS (.scss file types)
+The stylesheet language we use to generate our CSS.
+
+`@import '<partial filename'`
+- Only use the `@import` command to import files that set variables. 
+- If you `@import` a partial which generates styles, and the partial is called or imported elsewhere, the generated CSS will contain duplicate styles. 
+Only use `@import` on 'safe' partials which generate and set variables for use elsewhere, but don't produce any CSS. 
+Then, the files which call `@import` on these 'safe' partials can use these common variables to generate styles as needed. 
+
+Whenever a new feature is added to the frontend, make a good faith effort to pay attention to these things:
+
+- Are all new clickable/interactive items also accessible to a keyboard?
+- If an item is interactive, does it have hover and focus behaviour?
+- If color is removed from the page, is all essential information still present? 
+    - talking about color blind accessibility
+
+## Screen Readers
+
+Need to make sure things have the right `aria` attributes that let screen readers know how they should be used, and also have keyboard accessibility. 
+We can get a lot of mileage out of using default controls, but sometimes we can't. (the accordion behaviour on the search page table, modals...)
 
 ## Resources:
-[How to Center EVERYTHING](https://css-tricks.com/centering-css-complete-guide/)
-[Flexbox 101](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
-[CSS Grid 101](https://css-tricks.com/snippets/css/complete-guide-grid/)
-[CSS separation of concerns](https://adamwathan.me/css-utility-classes-and-separation-of-concerns/)
+- [CSS separation of concerns](https://adamwathan.me/css-utility-classes-and-separation-of-concerns/)
+- [How to Center EVERYTHING](https://css-tricks.com/centering-css-complete-guide/)
+- [Flexbox 101](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- [CSS Grid 101](https://css-tricks.com/snippets/css/complete-guide-grid/)
