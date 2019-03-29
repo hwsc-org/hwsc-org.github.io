@@ -258,6 +258,7 @@ Deletes or deactivates a user.
 
 ## Document
 Epics related to `hwsc-document-svc`
+
 ### CreateDocument
 #### Purpose
 User creates a document.
@@ -289,7 +290,26 @@ User creates a document.
                 1. app-gateway-svc returns `code.ok` to frontend.
                 2. frontend renders succesfull document creation.
 
+### ListUserDocumentCollection
+#### Purpose
+List the user documents.
 
+#### Limitations
+- TODO
+
+#### Procedure
+- TODO
+
+### AddFileMetadata
+#### Purpose
+Add a metadata for a document.
+
+#### Limitations
+- TODO
+
+#### Procedure
+- TODO
+                
 ## File Transaction
 Epics related to `hwsc-file-transaction-svc`
 
@@ -300,19 +320,69 @@ User uploads file to a cloud provider.
 #### Limitations
 - Currently supports Azure Blob Storage.
 - Will implement creating document and uploading file at the same page.
+- Will design a modal page for uploading/adding files.
+- Will implement number of users that can upload at a given time.
+- A user can only upload a maximum of 10 files at a given time.
+- Will implement either sleep/busy-wait/timeout just in case more than 10 files are being uploaded per user (most likely not gonna happen).
 
 #### Procedure
-1. 
+1. Refer to [CreateDocument](https://hwsc-org.github.io/wikis/app-gateway-svc/epics.html#createdocument)
+2. User clicks on the document from a list of documents from the user page using [ListUserDocumentCollection](https://hwsc-org.github.io/wikis/app-gateway-svc/epics.html#listuserdocumentcollection)
+3. TODO - Will design a modal page for uploading/adding files.
+4. User can only upload 10 files at a time.
+5. frontend invokes `UploadFile` from app-gateway-svc with the `duid` *N* amount times, *N* = number of files to upload.
+6. app-gateway-svc invokes `GetStatus` from file-transaction-svc.
+7. If document-svc is state is:
+   - `Unavailable`
+       1. file-transaction-svc returns `code.Unavailable` to app-gateway-svc.
+       2. app-gateway-svc returns `code.Unavailable` to frontend.
+       3. frontend renders a page to user that is unavailable to add files.
+   - `Available`
+        1. file-transaction-svc returns `code.Available` to app-gateway-svc.
+        2. app-gateway-svc invokes `UploadFile` from file-transaction-svc *N* amount times, *N* = number of files to upload.
+        3. file-transaction-svc uses a synchronized dictionary with the `uuid` as the key, and an `int` value representing the number of files.
+        4. If a `uuid` has a value of less than 10, then allow uploading a file, otherwise busy-wait until the value is less than 10 again.
+        5. For each file, do the following:
+            1. Increment the value for the `uuid` by one. 
+            2. file-transaction-svc uploads the file to Azure Blob Storage.
+            3. If the file upload is:
+                - Unsuccessful
+                    1. decrement the value for the `uuid` by one.
+                    2. file-transaction-svc returns an error message and the name of the file to app-gateway-svc.
+                    3. app-gateway-svc returns an error message to frontend.
+                    4. frontend displays an error next on the file progress bar.
+                - Successful
+                    1. decrement the value for the `uuid` by one.
+                    2. file-transaction-svc returns the `url` to app-gateway-svc.
+                    3. app-gateway-svc invokes [AddFileMetadata](https://hwsc-org.github.io/wikis/app-gateway-svc/epics.html#addfilemetadata) from the document-svc.
+                    4. If 
+                        - Successful
+                            1. app-gateway-svc returns `codes.OK` to frontend
+                            2. frontend displays a successfull upload on the file progress
+                        - Unsuccessful
+                            1. app-gateway-svc returns an error message to frontend.
+                            2. frontend displays an error next on the file progress bar.
+                            
+### CreateUserFolder
+#### Purpose
+Create a folder for the user in the cloud.
 
-    // Upload files to the storage
-    rpc UploadFile (stream Chunk) returns (FileTransactionResponse) {
-    }
-    // Download files from the storage
-    rpc DownloadZippedFiles (FileTransactionRequest) returns (stream Chunk) {
-    }
-    // Create user folder in the sorage
-    rpc CreateUserFolder (FileTransactionRequest) returns (FileTransactionResponse) {
-    }
+#### Limitations
+- TODO
+
+#### Procedure
+- TODO
+
+### DownloadZippedFiles
+#### Purpose
+Download and zip all the files of a document.
+
+#### Limitations
+- TODO
+
+#### Procedure
+- TODO
+
 
 
 
