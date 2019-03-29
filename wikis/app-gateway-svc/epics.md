@@ -258,7 +258,75 @@ Deletes or deactivates a user.
 
 ## Document
 Epics related to `hwsc-document-svc`
+### CreateDocument
+#### Purpose
+User creates a document.
+
+#### Limitations
+- Missing description field.
+
+#### Procedure
+1. User clicks on "Add Document" in the user page.
+2. User fills the required fields in a form.
+    - Frontend needs to sanitize some of the inputs.
+3. User clicks "Okay".
+4. Frontend sends the metadata to app-gateway-svc.
+5. app-gateway-svc invokes `GetStatus` from document-svc.
+6. If document-svc is state is:
+    - `Unavailable`
+        1. document-svc returns `code.Unavailable` to app-gateway-svc.
+        2. app-gateway-svc returns `code.Unavailable` to frontend.
+        3. frontend renders a page to user that is unavailable to add document.
+    - `Available`
+        1. document-svc returns `code.Available` to app-gateway-svc.
+        2. app-gateway-svc invokes `CreateDocument` with the metadata from document-svc.
+        3. document-svc tries to save the metadata in MongoDB.
+        4. If `CreateDocument` returns:
+            - error
+                1. app-gateway-svc returns an error to frontend.
+                2. frontend renders a page with helpful errors.
+            - `code.OK`
+                1. app-gateway-svc returns `code.ok` to frontend.
+                2. frontend renders succesfull document creation.
 
 
 ## File Transaction
 Epics related to `hwsc-file-transaction-svc`
+
+### UploadFile
+#### Purpose
+User uploads file to a cloud provider.
+
+#### Limitations
+- Currently supports Azure Blob Storage.
+- Will implement creating document and uploading file at the same page.
+
+#### Procedure
+1. 
+
+    // Upload files to the storage
+    rpc UploadFile (stream Chunk) returns (FileTransactionResponse) {
+    }
+    // Download files from the storage
+    rpc DownloadZippedFiles (FileTransactionRequest) returns (stream Chunk) {
+    }
+    // Create user folder in the sorage
+    rpc CreateUserFolder (FileTransactionRequest) returns (FileTransactionResponse) {
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
