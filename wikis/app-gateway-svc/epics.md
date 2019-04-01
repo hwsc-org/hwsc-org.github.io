@@ -60,7 +60,7 @@ User has to verify a new email on registration and update.
 6. app-gateway-svc parses `token_string`.
 7. app-gateway-svc invokes `VerifyEmailToken` from user-svc using the `token_string`.
 8. user-svc gets the `token_string`.
-9. user-svc extracts the `uuid` using `extractUUID` from the hwsc-lib.
+9. user-svc extracts the `uuid` using `ExtractUUID` from the hwsc-lib.
 10. user-svc locks for writing using `uuid`.
 11. user-svc gets the `row` from `user_svc.email_tokens`.
 12. user-svc verifies the following:
