@@ -76,3 +76,36 @@ These files are located in our [Slack](https://hwsc.slack.com) channel.
 ### Migrate
 1. Install the CLI using `brew install golang-migrate`
 2. Refer to the [repo](https://github.com/golang-migrate/migrate#use-in-your-go-project) for GoLang library imports
+
+## Windows 10
+### Ubuntu 18.04 Dual-Boot
+1. Partition your disk
+    - Open the Start Menu
+    - Type and run `diskmgmt.msc`
+    - Right click on your disk (C:) and select **Shrink Volume...**
+    - Enter your desired amount of space (in MB) to allocate to Ubuntu in the highlighted field (20000MB minimum, more recommended)
+    - Click **Shrink**
+2. Disable fast startup
+    - Open the Start Menu
+    - Type and run `Control Panel`
+    - Click **Power Options**
+    - Click **Choose what the power buttons do**
+    - Click **Change settings that are currently unavailable**
+    - Uncheck **Turn on fast startup**
+    - Click **Save changes**
+3. Download Ubuntu Desktop from the official Ubuntu [website](https://www.ubuntu.com/download/desktop)
+4. Create a bootable Ubuntu USB drive with Rufus
+    - Download Rufus from the official Rufus [website](https://rufus.ie/)
+    - Insert an *empty* USB drive (at least 2GB) into your PC (***WARNING:*** *YOUR USB DRIVE WILL BE WIPED*)
+    - Run Rufus
+    - Select your inserted USB drive in the **Device** field
+    - Click **SELECT** and select your downloaded Ubuntu Desktop .iso file
+    - Click **START**
+5. Restart your PC and press your PC's boot menu hot-key during startup
+    - If you do not know your PC's boot menu hot-key
+        - You may find it on the table [here](https://www.disk-image.com/faq-bootmenu.htm)
+        - If you did not find your PC manufacturer on the table, go to your PC manufacturer's website and look for their boot menu hot-key
+        - If you built your own PC, go to your motherboard manufacturer's website and look for their boot menu hot-key
+6. Select your USB drive on your PC's boot menu
+7. Install Ubuntu
+    - On the **Installation type** step, make sure **Install Ubuntu alongside Windows 10** is selected
