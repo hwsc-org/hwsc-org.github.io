@@ -10,6 +10,7 @@ redirect_from:
 This page will help you setup your development environment.
 
 This document currently supports **macOs**. 
+If using Windows 10, then consider dual boot with [Ubuntu 18.04](https://hwsc-org.github.io/wikis/fundamentals/onboarding.html#ubuntu-1804-dual-boot).
 
 Feel free to add other operating system and update this document as you go through the steps.
 
