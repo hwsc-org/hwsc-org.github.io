@@ -228,7 +228,7 @@ Performs a user update.
        6. app-gateway-svc forwards the response to Chrome.
        7. For an email update, Chrome redirects user to login page, or informs the user to check their email, otherwise update the user page using the updated `user` from the response.
 
-### GetSecret
+### GetAuthSecret
 #### Purpose
 app-gateway-svc updates the current `secret`
 #### Limitations
