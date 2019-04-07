@@ -14,7 +14,6 @@ Epics related to `hwsc-user-svc`
 Chrome is able to create a new user.
 #### Limitations
 - `EmailToken` expires in 2 weeks.
-- `CreateUser` requires a new column called `secret` in table `user_svc.email_tokens` - [link](https://github.com/hwsc-org/hwsc-user-svc/issues/113)
 
 #### Procedure
 1. Chrome goes to a registration page.
@@ -49,7 +48,6 @@ Chrome is able to create a new user.
 User has to verify a new email on registration and update.
 #### Limitations
 - `EmailToken` expires in 2 weeks.
-- `VerifyEmailToken` requires a new column called `secret` in table `user_svc.email_tokens` - [link](https://github.com/hwsc-org/hwsc-user-svc/issues/113)
 
 #### Procedure
 1. User clicks on a verification link from their email.
