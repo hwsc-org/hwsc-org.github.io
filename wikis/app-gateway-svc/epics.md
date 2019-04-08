@@ -54,7 +54,7 @@ User has to verify a new email on registration and update.
 2. Chrome opens this link.
 3. Chrome is redirected to the verification link.
 4. Chrome extracts and validates the query string `verify-email?token?=<token>`.
-5. Chrome dials to app-gateway-svc using `"authorization": "Email Token " + <token>`.
+5. Chrome dials to app-gateway-svc using `"Authorization": "Email Token " + <token>`.
 6. app-gateway-svc parses `token_string`.
 7. app-gateway-svc invokes `VerifyEmailToken` from user-svc using the `token_string`.
 8. user-svc gets the `token_string`.
@@ -100,7 +100,7 @@ In the event of a connection failure, Chrome has to authenticate with app-gatewa
 - `VerifyAuthToken` only works with `User` permission - [link](https://github.com/hwsc-org/hwsc-user-svc/issues/111)
 
 #### Procedure
-1. Chrome dials to app-gateway-svc using `"authorization": "Auth Token " + <token_string>`.
+1. Chrome dials to app-gateway-svc using `"Authorization": "Auth Token " + <token_string>`.
 2. app-gateway-svc parses the `token_string`.
 3. app-gateway-svc invokes `VerifyAuthToken` from the user-svc with the `token_string`.
 4. user-svc gets the `token_string` and pair the `token_string` with a `secret` to make an `identification`.
@@ -127,7 +127,7 @@ Chrome is able to login using email and password.
 #### Procedure
 1. Chrome logs in with user's email and password.
 2. Chrome performs base64URL encoding with `email:password`.
-3. Chrome dials to app-gateway-svc using `"authorization": "Basic " + base64 encoded "<email:password>"`.
+3. Chrome dials to app-gateway-svc using `"Authorization": "Basic " + base64 encoded "<email:password>"`.
 4. app-gateway-svc parses the `email` and `password`.
 5. app-gateway-svc invokes `AuthenticateUser` from the user-svc using `email` and `password`.
 6. user-svc validates the `email` and `password`.
