@@ -55,7 +55,7 @@ These files are located in our [Slack](https://hwsc.slack.com) channel.
 5. `sudo make install`
 6. `which protoc`
 7. `protoc --version`
-8. If necessary, append `export PATH="$HOME/protobuf-3.7.0/src:$PATH"` in your `~/.bash_profile`
+8. If necessary, append `export PATH="$HOME/protobuf-3.7.1/src:$PATH"` in your `~/.bash_profile`
 
 ### Node JS & npm 
 1. Follow the installation guide in the official Node JS [website](https://nodejs.org/en/download/current/)
