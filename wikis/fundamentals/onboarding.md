@@ -50,6 +50,7 @@ These files are located in our [Slack](https://hwsc.slack.com) channel.
 1. Download *protobuf-all-3.7.1.tar.gz* from the official [repo](https://github.com/protocolbuffers/protobuf/releases)
 2. Untar *protobuf-all-3.7.1.tar.gz*
 3. Enter the folder and run `./autogen.sh && ./configure && make`
+    - If you get a readline error, then consider switching to a version using `brew switch readline` and `brew switch readline X.X.X`
 4. `make check`
 5. `sudo make install`
 6. `which protoc`
@@ -59,7 +60,7 @@ These files are located in our [Slack](https://hwsc.slack.com) channel.
 ### Node JS & npm 
 1. Follow the installation guide in the official Node JS [website](https://nodejs.org/en/download/current/)
 
-### Python 3.7.2
+### Python 3.7.3
 1. Follow the installation guide in the offcial Python [website](https://www.python.org/downloads/)
 2. `curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py`
 3. `python3.7 get-pip.py`
@@ -71,7 +72,7 @@ These files are located in our [Slack](https://hwsc.slack.com) channel.
 ### MongoDB 4.2
 1. Follow the installation guide in the official MongoDB [website](https://docs.mongodb.com/master/tutorial/install-mongodb-on-os-x/)
 
-### PosgtreSQL 11
+### PosgtreSQL 11.2
 1. Follow the installation guide in the official PSQL [website](https://postgresapp.com/downloads.html)
 
 ### Migrate
