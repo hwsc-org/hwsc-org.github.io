@@ -46,9 +46,9 @@ These files are located in our [Slack](https://hwsc.slack.com) channel.
 2. `go get -u github.com/golang/protobuf/protoc-gen-go`
 3. `go get -u google.golang.org/grpc`
 
-### protoc 3.7.0
-1. Download *protobuf-all-3.7.0.tar.gz* from the official [repo](https://github.com/protocolbuffers/protobuf/releases)
-2. Untar *protobuf-all-3.7.0.tar.gz*
+### protoc 3.7.1
+1. Download *protobuf-all-3.7.1.tar.gz* from the official [repo](https://github.com/protocolbuffers/protobuf/releases)
+2. Untar *protobuf-all-3.7.1.tar.gz*
 3. Enter the folder and run `./autogen.sh && ./configure && make`
 4. `make check`
 5. `sudo make install`
