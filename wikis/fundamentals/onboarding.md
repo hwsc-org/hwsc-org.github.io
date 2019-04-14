@@ -41,7 +41,7 @@ These files are located in our [Slack](https://hwsc.slack.com) channel.
 3. `brew install wget`
 4. `brew install autoconf && brew install automake && brew install libtool`
 
-### GoLang 1.12
+### GoLang 1.12.4
 1. Follow the installation guide in the official GoLang [website](https://golang.org/doc/install)
 2. `go get -u github.com/golang/protobuf/protoc-gen-go`
 3. `go get -u google.golang.org/grpc`
