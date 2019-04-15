@@ -65,6 +65,7 @@ These files are located in our [Slack](https://hwsc.slack.com) channel.
 2. `curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py`
 3. `python3.7 get-pip.py`
 4. `pip3.7 install pipenv`
+5. `pip3.7 install grpcio` or `pip3.7 install --upgrade grpcio`
 
 ### Docker
 1. Download and install Docker Desktop for Mac from the official [website](https://hub.docker.com/editions/community/docker-ce-desktop-mac)
