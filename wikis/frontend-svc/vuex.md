@@ -3,8 +3,6 @@ layout: wiki
 directory: frontend-svc
 filename: vuex.md
 title: Frontend > Vuex
-redirect_from:
-  - "/wikis/frontend-svc/"
 ---
 Refer: https://github.com/hwsc-org/hwsc-app-gateway-svc/issues/9#issuecomment-433744526
 

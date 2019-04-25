@@ -3,9 +3,6 @@ layout: wiki
 directory: fundamentals
 filename: authority.md
 title: Fundamentals > Authorization/Authentication
-redirect_from:
-  - "/wikis/fundamentals/"
-  - "/wikis/"
 ---
 ## Permission Level
 ### NoPermission

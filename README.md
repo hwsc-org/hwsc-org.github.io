@@ -211,5 +211,5 @@ Follow the following steps:
 - [ ] `$ git clone https://github.com/hwsc-org/hwsc-org.github.io.git` or download this project on your computer
 - [ ] Open cloned or downloaded project on your IDE
 - [ ] You should be at root of this project
-- [ ] Run `$ bundle install` in terminal to install Jekyll and other dependencies from the GitHub Pages gem
+- [ ] Run `$ bundle install --path vendor/bundle` in terminal to install Jekyll and other dependencies from the GitHub Pages gem
 - [ ] Run `$ bundle exec jekyll serve` to run Jekyll site locally

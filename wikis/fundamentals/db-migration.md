@@ -3,8 +3,6 @@ layout: wiki
 directory: fundamentals
 filename: db-migration.md
 title: Fundamentals > Database Migration
-redirect_from:
-  - "/wikis/fundamentals/"
 ---
 ## Database Migration
 A Database migration refers to the management of incremental, reversible changes to relational database schemas.

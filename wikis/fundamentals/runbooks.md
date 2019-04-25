@@ -3,8 +3,6 @@ layout: wiki
 directory: fundamentals
 filename: runbooks.md
 title: Fundamentals > Runbooks
-redirect_from:
-  - "/wikis/fundamentals/"
 ---
 ## Runbooks
 A runbook is a compilation of routine procedures and operations that the system administrator or operator carries out.

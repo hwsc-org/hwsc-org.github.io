@@ -3,8 +3,6 @@ layout: wiki
 directory: fundamentals
 filename: ci-cd.md
 title: Fundamentals > CI/CD
-redirect_from:
-  - "/wikis/fundamentals/"
 ---
 ## Purpose
 CI/CD pipeline implementation or the Continuous Integration/Continuous Deployment is the backbone of the modern developmental and operational environment. 
