@@ -3,6 +3,8 @@ layout: wiki
 directory: frontend-svc
 filename: general.md
 title: Frontend > General
+redirect_from:
+  - "/wikis/frontend/"
 ---
 ## General 
 ### Rules and Guidelines
