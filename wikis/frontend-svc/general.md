@@ -4,7 +4,7 @@ directory: frontend-svc
 filename: general.md
 title: Frontend > General
 redirect_from:
-  - "/wikis/frontend/"
+  - "/wikis/frontend-svc/"
 ---
 ## General 
 ### Rules and Guidelines
