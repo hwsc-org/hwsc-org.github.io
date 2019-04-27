@@ -95,7 +95,6 @@ In the event of a connection failure, Chrome has to authenticate with app-gatewa
 #### Limitations
 - `AuthToken` expires in 2 hours.
 - `Secret` expires in 1 week.
-- `VerifyAuthToken` only works with `User` permission - [link](https://github.com/hwsc-org/hwsc-user-svc/issues/111)
 
 #### Procedure
 1. Chrome dials to app-gateway-svc using `"authorization": "Auth Token " + <token_string>`.
