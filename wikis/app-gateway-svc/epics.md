@@ -120,7 +120,6 @@ Chrome is able to login using email and password.
 #### Limitations
 - `AuthToken` expires in 2 hours.
 - `Secret` expires in 1 week.
-- `AuthenticateUser` should return an `identification` and not the matched user - [link](https://github.com/hwsc-org/hwsc-user-svc/issues/112)
 
 #### Procedure
 1. Chrome logs in with user's email and password.
