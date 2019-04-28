@@ -51,3 +51,7 @@ In short, don't be afraid to contribute feedback! Code reviewing can be one of t
 8. Test for other browsers like Firefox, Chrome, and Safari.
 9. Try setting a slow internet to test the page. (Can be set within the console)
 10. Ensure `CHANGELOG.md` is updated.
+
+### Merged PR and direct commits
+Try to **AVOID** committing directly to branch `master` especially changes dealing with functionality. Refactoring and adding comments can be pushed directly to the `master` to make code reviews easier later on.
+If for some reason commits and incomplete PR have to be pushed, then kindly inform the team in slack channel #gihub-pr-todo, so others can review and raise concerns as needed.
