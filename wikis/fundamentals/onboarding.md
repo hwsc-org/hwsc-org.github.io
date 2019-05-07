@@ -55,6 +55,9 @@ These files are located in our [Slack](https://hwsc.slack.com) channel.
 7. `protoc --version`
 8. If necessary, append `export PATH="$HOME/protobuf-3.7.1/src:$PATH"` in your `~/.bash_profile`
 
+### frontend
+Read the frontend [doc](https://github.com/hwsc-org/hwsc-frontend/blob/master/README.md) to install tools and dependencies.
+
 ### Node JS & npm 
 1. Follow the installation guide in the official Node JS [website](https://nodejs.org/en/download/current/)
 
