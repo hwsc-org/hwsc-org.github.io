@@ -12,8 +12,6 @@ give users the choice of reading texts in their preferred language.
 ### Supported Languages
 `en`: english, default
 
-<br>
-
 ## Adding Translations
 One file per language in JSON files. Default language is `English` and `en.json`
 file is the template to refer to when translating to other languages.
@@ -31,8 +29,6 @@ Name your JSON file according to `639-1` column referenced from the
 Examples:
 1. For English: `en.json`
 1. For Korean: `ko.json`
-
-<br>
 
 ## Coding Guidelines
 Always add new texts to `en.json`, then update other translation files.
@@ -105,8 +101,6 @@ In `en.json`:
     .    
 }
 ```
-
-<br>
 
 ## Resources
 [Code and Web's Vue Translation Tutorial](https://www.codeandweb.com/babeledit/tutorials/how-to-translate-your-vue-app-with-vue-i18n)
