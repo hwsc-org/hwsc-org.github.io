@@ -106,5 +106,7 @@ In `en.json`:
 }
 ```
 
+<br>
+
 ## Resources
 [Code and Web's Vue Translation Tutorial](https://www.codeandweb.com/babeledit/tutorials/how-to-translate-your-vue-app-with-vue-i18n)
