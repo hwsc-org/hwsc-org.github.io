@@ -35,21 +35,24 @@ Always add new texts to `en.json`, then update other translation files.
 
 ### Translation Structure
 Use nested objects to group our translations. 
-Group them by `major components` or by `global commons`:
+Group them by 
+[major components](/wikis/frontend-svc/translations.html#major-components) or by 
+[global commons](/wikis/frontend-svc/translations.html#global-commons)
 
-#### Major Components
+### Major Components
 Below is a list of vue components that deserves to be grouped or nested in JSON object
 1. Views
 1. Navigation Menu
 
 TODO, TBD
 
-#### Global Commons
+### Global Commons
 Refers to grouped common translations that will be used more than a few times, i.e: `HWSC`
 which is the name of our app, and is used in multiple web pages and part of other titles.
 
-#### Grouped Structure Example
-In `en.json` (this example does not re-use translations, which is discouraged):
+### Grouped Structure Example
+In `en.json` (this example does not re-use translations, see 
+[Referencing Other Translations](/wikis/frontend-svc/translations.html#referencing-other-translations)):
 
 ```json
 {
@@ -74,7 +77,7 @@ In `en.json` (this example does not re-use translations, which is discouraged):
 
 `advanced-search-view` is the page when user clicks `Advanced Search` from `main-view`.
 
-#### Referencing other translations
+### Referencing other translations
 Follow the sample below to re-use translations in other parts of the current file
 
 In `en.json`:
