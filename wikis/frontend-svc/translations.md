@@ -33,6 +33,12 @@ Examples:
 ## Coding Guidelines
 Always add new texts to `en.json`, then update other translation files.
 
+### Using translation in Vue
+To optimize load time and utilize caching, use 
+[custom directive: v-t](https://kazupon.github.io/vue-i18n/guide/directive.html)
+
+Avoid using `$t()` function.
+
 ### Translation Structure
 Use nested objects to group our translations. 
 Group them by 
@@ -106,4 +112,6 @@ In `en.json`:
 ```
 
 ## Resources
-[Code and Web's Vue Translation Tutorial](https://www.codeandweb.com/babeledit/tutorials/how-to-translate-your-vue-app-with-vue-i18n)
+[Basic Vue i18n Tutorial (toward bottom of article)](https://www.codeandweb.com/babeledit/tutorials/how-to-translate-your-vue-app-with-vue-i18n)
+
+[Official Vue i18n Tutorial](https://kazupon.github.io/vue-i18n/guide/formatting.html#named-formatting)
