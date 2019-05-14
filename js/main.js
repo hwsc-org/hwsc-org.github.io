@@ -8,6 +8,8 @@ $(document).ready(function() {
   const frontSvcRoutes = new Map(Object.entries({
     // ORDER MATTERS, also replace .md extension to .html
     General: `${FRONT_SVC_PATH}general.html`,
+    Architecture: `${FRONT_SVC_PATH}architecture.html`,
+    Translations: `${FRONT_SVC_PATH}translations.html`,
     Vuex: `${FRONT_SVC_PATH}vuex.html`,
   }));
 
