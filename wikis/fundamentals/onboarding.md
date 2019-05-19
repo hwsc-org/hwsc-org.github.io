@@ -46,7 +46,7 @@ These files are located in our [Slack](https://hwsc.slack.com) channel.
 
 ### protoc 3.7.1
 1. Download *protobuf-all-3.7.1.tar.gz* from the official [repo](https://github.com/protocolbuffers/protobuf/releases)
-2. Untar *protobuf-all-3.7.1.tar.gz*
+2. Untar file: `tar -zxvf protobuf-all-3.7.1.tar.gz`
 3. Enter the folder and run `./autogen.sh && ./configure && make`
     - If you get a readline error, then consider switching to a version using `brew switch readline` and `brew switch readline X.X.X`
 4. `make check`
