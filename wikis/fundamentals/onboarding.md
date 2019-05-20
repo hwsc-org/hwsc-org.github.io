@@ -23,6 +23,7 @@ Make accounts and request for permissions for the following resources.
 - [Azure DevOps](https://dev.azure.com/hwsc-org)
 - [Azure](https://azure.microsoft.com/en-us/features/azure-portal/)
 - [Slack](https://hwsc.slack.com)
+- [npm](https://www.npmjs.com/~hwss2018)
 
 ## Configuration Files
 These files are located in our [Slack](https://hwsc.slack.com) channel.
@@ -54,6 +55,11 @@ These files are located in our [Slack](https://hwsc.slack.com) channel.
 6. `which protoc`
 7. `protoc --version`
 8. If necessary, append `export PATH="$HOME/protobuf-3.7.1/src:$PATH"` in your `~/.bash_profile`
+
+### protoc-gen-grpc-web 1.0.4
+1. Follow these [instructions](https://github.com/grpc/grpc-web#code-generator-plugin)
+
+Note: Download `darwin` version for mac's
 
 ### frontend
 Read the frontend [doc](https://github.com/hwsc-org/hwsc-frontend/blob/master/README.md) to install tools and dependencies.
