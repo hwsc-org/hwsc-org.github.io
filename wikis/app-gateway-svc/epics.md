@@ -123,7 +123,7 @@ Chrome is able to login using email and password.
 #### Procedure
 1. Chrome logs in with user's email and password.
 2. Chrome performs base64URL encoding with `email:password`.
-3. Chrome dials to app-gateway-svc using `"authorization": "Basic " + base64 encoded "<email:password>"`.
+3. Chrome dials to app-gateway-svc using `"authorization": "Basic " + <base64 encoded email:password>`.
 4. app-gateway-svc parses the `email` and `password`.
 5. app-gateway-svc invokes `AuthenticateUser` from the user-svc using `email` and `password`.
 6. user-svc validates the `email` and `password`.
