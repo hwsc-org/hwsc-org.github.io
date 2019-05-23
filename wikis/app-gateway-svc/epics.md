@@ -156,12 +156,12 @@ Maintain a secured connection between app-gateway-svc and browser.
     2. app-gateway-svc validates the `token_string` to an `Identication` using an `Authority`.
         - If the `token_string` is not valid:
             1. app-gateway-svc returns `codes.DeadlineExceeded` to Chrome.
-            2. Chrome is redirects to login page.
+            2. Chrome redirects to login page.
         - If the `token_string` is valid:
             1. app-gateway-svc invokes `GetNewAuthToken` from user-svc using the `Identification`.
             2. user-svc generates a new `AuthToken`.
             3. user-svc inserts the `AuthToken` to `user_security.auth_tokens` table.
-            4. user-svc returns the `identification` to app-gateway-svc.
+            4. user-svc returns the `Identification` to app-gateway-svc.
             5. app-gateway-svc updates the current `secret` as necessary.
             6. app-gateway-svc returns the `token_string` to Chrome.
             7. Chrome updates the `token_string`.
