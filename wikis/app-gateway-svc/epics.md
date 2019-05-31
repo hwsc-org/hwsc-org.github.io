@@ -126,7 +126,7 @@ Chrome is able to login using email and password.
 3. Chrome dials to app-gateway-svc using `"authorization": "Basic " + <base64 encoded email:password>`.
 4. app-gateway-svc parses the `email` and `password`.
 5. app-gateway-svc invokes `AuthenticateUser` from the user-svc using `email` and `password`.
-6. user-svc validates the `email` and `password`.
+6. user-svc validates the `email`, `password`, and user's permission level has to be at least equal or greater than `UserRegistration` level.
 7. If the `email` and `password` are valid:
     1. user-svc generates or grabs an existing `AuthToken`.
     2. user-svc returns `codes.OK` and `identification` to app-gateway-svc.
@@ -147,7 +147,6 @@ Maintain a secured connection between app-gateway-svc and browser.
 #### Limitations
 - `AuthToken` expires in 2 hours.
 - `Secret` expires in 1 week.
-- Rework `GetAuthToken` - [link](https://github.com/hwsc-org/hwsc-user-svc/issues/114)
 
 #### Procedure
 1. Every 5 minutes, Chrome verifies if the current `token_string` has not expired.
