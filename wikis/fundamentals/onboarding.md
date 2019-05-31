@@ -21,7 +21,6 @@ Make accounts and request for permissions for the following resources.
 - [Github](https://github.com/hwsc-org)
 - [DockerHub](https://hub.docker.com/u/hwsc)
 - [Azure DevOps](https://dev.azure.com/hwsc-org)
-- [Azure](https://azure.microsoft.com/en-us/features/azure-portal/)
 - [Slack](https://hwsc.slack.com)
 - [npm](https://www.npmjs.com/~hwss2018)
 
