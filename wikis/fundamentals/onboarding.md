@@ -61,11 +61,11 @@ These files are located in our [Slack](https://hwsc.slack.com) channel.
 
 Note: Download `darwin` version for mac's
 
-### frontend
-Read the frontend [doc](https://github.com/hwsc-org/hwsc-frontend/blob/master/README.md) to install tools and dependencies.
-
 ### Node JS & npm 
 1. Follow the installation guide in the official Node JS [website](https://nodejs.org/en/download/current/)
+
+### frontend
+Read the frontend [doc](https://github.com/hwsc-org/hwsc-frontend/blob/master/README.md) to install tools and dependencies.
 
 ### Python 3.7.3
 1. Follow the installation guide in the offcial Python [website](https://www.python.org/downloads/)
