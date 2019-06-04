@@ -45,9 +45,9 @@ These files are located in our [Slack](https://hwsc.slack.com) channel.
 3. `go get -u google.golang.org/grpc`
 4. `go get -u golang.org/x/lint/golint`
 
-### protoc 3.7.1
-1. Download *protobuf-all-3.7.1.tar.gz* from the official [repo](https://github.com/protocolbuffers/protobuf/releases)
-2. Untar file: `tar -zxvf protobuf-all-3.7.1.tar.gz`
+### protoc 3.8.0
+1. Download *protobuf-all-3.8.0.tar.gz* from the official [repo](https://github.com/protocolbuffers/protobuf/releases)
+2. Untar file: `tar -zxvf protobuf-all-3.8.0.tar.gz`
 3. Enter the folder and run `./autogen.sh && ./configure && make`
     - If you get a readline error, then consider switching to a version using `brew switch readline` and `brew switch readline X.X.X`
 4. `make check`
