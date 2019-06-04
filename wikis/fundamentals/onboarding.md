@@ -82,6 +82,7 @@ Read the frontend [doc](https://github.com/hwsc-org/hwsc-frontend/blob/master/RE
 
 ### PosgtreSQL 11.2
 1. Follow the installation guide in the official PSQL [website](https://postgresapp.com/downloads.html)
+2. If necessary, `brew install postgres`
 
 ### Migrate
 1. Install the CLI using `brew install golang-migrate`
