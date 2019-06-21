@@ -1,11 +1,11 @@
 ---
 layout: wiki
 directory: app-gateway-svc
-filename: epics.md
-title: App Gateway > Epics
+filename: specifications.md
+title: App Gateway > Specifications
 ---
 ## User
-Epics related to `hwsc-user-svc`
+Specifications related to `hwsc-user-svc`
 
 ### CreateUser
 #### Purpose
@@ -18,7 +18,7 @@ Chrome is able to create a new user.
 2. User puts in the required fields for registration.
 3. Chrome sanitizes user inputs as required.
 4. Challenger user with a CAPTCHA test.
-5. If user passes CAPTCHA test, Chrome dials using a dummy email and password - [link](https://hwsc-org.github.io/wikis/app-gateway/epics.html#authenticateuser)
+5. If user passes CAPTCHA test, Chrome dials using a dummy email and password - [link](https://hwsc-org.github.io/wikis/app-gateway/specifications.html#authenticateuser)
 6. app-gateway-svc returns `token_string` with `UserRegistration` permission.
 7. Using the `token_string`, Chrome invokes `CreateUser` from app-gateway-svc with the required fields.
 8. app-gateway-svc validates the `token_string` using an `Authority` with `UserRegistration` permission.
@@ -134,7 +134,7 @@ Chrome is able to login using email and password.
     3. app-gateway-svc finalizes the authentication.
     4. app-gateway-svc performs context metadata sanitization.
     5. app-gateway-svc returns the `token_string` to Chrome.
-    6. Chrome invokes `GetUser` from app-gateway-svc - [link](https://hwsc-org.github.io/wikis/app-gateway/epics.html#getuser)
+    6. Chrome invokes `GetUser` from app-gateway-svc - [link](https://hwsc-org.github.io/wikis/app-gateway/specifications.html#getuser)
     7. Chrome redirects to the user's page.
 8. If the `email` and `password` are invalid: 
     1. user-svc returns the appropriate error code.
@@ -240,7 +240,7 @@ app-gateway-svc updates the current `secret`
         3. user-svc returns the `identification` with the active `secret` to app-gateway-svc.
         4. app-gateway-svc saves the `secret`
     - If the user-svc is unavailable:
-        1. app-gateway-svc will grab the `secret` during invocation of `AuthenticateUser` - [link](https://hwsc-org.github.io/wikis/app-gateway/epics.html#getuser)
+        1. app-gateway-svc will grab the `secret` during invocation of `AuthenticateUser` - [link](https://hwsc-org.github.io/wikis/app-gateway/specifications.html#getuser)
   
 ### DeleteUser
 #### Purpose
@@ -250,7 +250,7 @@ Deletes or deactivates a user.
 
 
 ## Document
-Epics related to `hwsc-document-svc`
+Specifications related to `hwsc-document-svc`
 
 ### CreateDocument
 #### Purpose
@@ -304,7 +304,7 @@ Add a metadata for a document.
 - TODO
                 
 ## File Transaction
-Epics related to `hwsc-file-transaction-svc`
+Specifications related to `hwsc-file-transaction-svc`
 
 ### UploadFile
 #### Purpose
@@ -319,8 +319,8 @@ User uploads file to a cloud provider.
 - Will implement either sleep/busy-wait/timeout just in case more than 10 files are being uploaded per user (most likely not gonna happen).
 
 #### Procedure
-1. Refer to [CreateDocument](https://hwsc-org.github.io/wikis/app-gateway-svc/epics.html#createdocument)
-2. User clicks on the document from a list of documents from the user page using [ListUserDocumentCollection](https://hwsc-org.github.io/wikis/app-gateway-svc/epics.html#listuserdocumentcollection)
+1. Refer to [CreateDocument](https://hwsc-org.github.io/wikis/app-gateway-svc/specifications.html#createdocument)
+2. User clicks on the document from a list of documents from the user page using [ListUserDocumentCollection](https://hwsc-org.github.io/wikis/app-gateway-svc/specifications.html#listuserdocumentcollection)
 3. TODO - Will design a modal page for uploading/adding files.
 4. User can only upload 10 files at a time.
 5. frontend invokes `UploadFile` from app-gateway-svc with the `duid` *N* amount times, *N* = number of files to upload.
@@ -347,7 +347,7 @@ User uploads file to a cloud provider.
                 - Successful
                     1. decrement the value for the `uuid` by one.
                     2. file-transaction-svc returns the `url` to app-gateway-svc.
-                    3. app-gateway-svc invokes [AddFileMetadata](https://hwsc-org.github.io/wikis/app-gateway-svc/epics.html#addfilemetadata) from the document-svc.
+                    3. app-gateway-svc invokes [AddFileMetadata](https://hwsc-org.github.io/wikis/app-gateway-svc/specifications.html#addfilemetadata) from the document-svc.
                     4. If 
                         - Successful
                             1. app-gateway-svc returns `codes.OK` to frontend

@@ -11,7 +11,7 @@ title: Fundamentals > Authorization/Authentication
 - This permission level requires `HS256` hashing algorithm.
 
 ### UserRegistration
-- `UserRegistration` is used for [CreateUser](https://hwsc-org.github.io/wikis/app-gateway/epics.html#authenticateuser)
+- `UserRegistration` is used for [CreateUser](https://hwsc-org.github.io/wikis/app-gateway/specifications.html#authenticateuser)
 - This permission level requires `HS256` hashing algorithm.
 
 ### User

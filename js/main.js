@@ -41,7 +41,7 @@ $(document).ready(function() {
   const appGatewayRoutes = new Map(Object.entries({
     // ORDER MATTERS, also replace .md extension to .html
     'Documentation': `${APP_GATEWAY_PATH}doc.html`,
-    'Epics': `${APP_GATEWAY_PATH}epics.html`,
+    'Specifications': `${APP_GATEWAY_PATH}specifications.html`,
   }));
 
   // all wikis for fundamentals
