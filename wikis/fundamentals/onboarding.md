@@ -54,7 +54,7 @@ These files are located in our [Slack](https://hwsc.slack.com) channel.
 5. `sudo make install`
 6. `which protoc`
 7. `protoc --version`
-8. If necessary, append `export PATH="$HOME/protobuf-3.7.1/src:$PATH"` in your `~/.bash_profile`
+8. If necessary, append `export PATH="$HOME/protobuf-3.8.0/src:$PATH"` in your `~/.bash_profile`
 
 ### protoc-gen-grpc-web 1.0.4
 1. Follow these [instructions](https://github.com/grpc/grpc-web#code-generator-plugin)
