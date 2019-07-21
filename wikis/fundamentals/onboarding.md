@@ -56,7 +56,7 @@ These files are located in our [Slack](https://hwsc.slack.com) channel.
 7. `protoc --version`
 8. If necessary, append `export PATH="$HOME/protobuf-3.9.0/src:$PATH"` in your `~/.bash_profile`
 
-### protoc-gen-grpc-web 1.0.4
+### protoc-gen-grpc-web 1.0.5
 1. Follow these [instructions](https://github.com/grpc/grpc-web#code-generator-plugin)
 
 Note: Download `darwin` version for mac's
