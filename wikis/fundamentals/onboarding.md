@@ -39,22 +39,22 @@ These files are located in our [Slack](https://hwsc.slack.com) channel.
 3. `brew install wget`
 4. `brew install autoconf && brew install automake && brew install libtool`
 
-### GoLang 1.12.6
+### GoLang 1.12.7
 1. Follow the installation guide in the official GoLang [website](https://golang.org/doc/install)
 2. `go get -u github.com/golang/protobuf/protoc-gen-go`
 3. `go get -u google.golang.org/grpc`
 4. `go get -u golang.org/x/lint/golint`
 
-### protoc 3.8.0
-1. Download *protobuf-all-3.8.0.tar.gz* from the official [repo](https://github.com/protocolbuffers/protobuf/releases)
-2. Untar file: `tar -zxvf protobuf-all-3.8.0.tar.gz`
+### protoc 3.9.0
+1. Download *protobuf-all-3.9.0.tar.gz* from the official [repo](https://github.com/protocolbuffers/protobuf/releases)
+2. Untar file: `tar -zxvf protobuf-all-3.9.0.tar.gz`
 3. Enter the folder and run `./autogen.sh && ./configure && make`
     - If you get a readline error, then consider switching to a version using `brew switch readline` and `brew switch readline X.X.X`
 4. `make check`
 5. `sudo make install`
 6. `which protoc`
 7. `protoc --version`
-8. If necessary, append `export PATH="$HOME/protobuf-3.8.0/src:$PATH"` in your `~/.bash_profile`
+8. If necessary, append `export PATH="$HOME/protobuf-3.9.0/src:$PATH"` in your `~/.bash_profile`
 
 ### protoc-gen-grpc-web 1.0.4
 1. Follow these [instructions](https://github.com/grpc/grpc-web#code-generator-plugin)
